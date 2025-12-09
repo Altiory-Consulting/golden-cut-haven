@@ -127,7 +127,7 @@ export function Header() {
             <img
               src={logo}
               alt="Hair do top"
-              className="h-20 lg:h-40 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(196,164,106,0.6)] group-hover:scale-105 animate-fade-in opacity-0"
+              className="h-24 lg:h-48 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(196,164,106,0.6)] group-hover:scale-105 animate-fade-in opacity-0"
               style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
             />
           </Link>
