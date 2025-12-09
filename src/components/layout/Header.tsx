@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -15,6 +16,7 @@ const navigation = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,7 +29,20 @@ export function Header() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsDropdownOpen(false);
   }, [location]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.dropdown-container')) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   return (
     <header
@@ -40,46 +55,81 @@ export function Header() {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20 lg:h-24">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="font-playfair text-2xl lg:text-3xl tracking-wider text-primary hover:text-accent transition-colors duration-300"
-          >
-            Hair do top
-          </Link>
+          {/* Left: Mobile Menu Button */}
+          <div className="flex items-center lg:w-1/3">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden text-primary hover:text-accent transition-colors"
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-10">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
+            {/* Desktop Dropdown Menu */}
+            <div className="hidden lg:block relative dropdown-container">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className={cn(
-                  "font-cormorant text-sm tracking-[0.2em] uppercase transition-all duration-300 hover-gold-glow",
-                  location.pathname === item.href
-                    ? "text-accent"
-                    : "text-foreground/80 hover:text-primary"
+                  "flex items-center gap-2 font-cormorant text-sm tracking-[0.2em] uppercase transition-all duration-300 hover-gold-glow",
+                  isDropdownOpen ? "text-accent" : "text-foreground/80 hover:text-primary"
                 )}
               >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+                Menu
+                <ChevronDown 
+                  size={16} 
+                  className={cn(
+                    "transition-transform duration-300",
+                    isDropdownOpen && "rotate-180"
+                  )} 
+                />
+              </button>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button variant="hero" size="lg" asChild>
+              {/* Dropdown Menu */}
+              <div
+                className={cn(
+                  "absolute top-full left-0 mt-4 w-56 bg-deep-black border border-primary/20 shadow-xl transition-all duration-300 z-50",
+                  isDropdownOpen
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible -translate-y-2"
+                )}
+              >
+                <nav className="py-3">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={cn(
+                        "block px-6 py-3 font-cormorant text-base tracking-wider transition-all duration-300",
+                        location.pathname === item.href
+                          ? "text-accent bg-primary/5"
+                          : "text-foreground/70 hover:text-primary hover:bg-primary/5"
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          {/* Center: Logo */}
+          <Link
+            to="/"
+            className="flex-shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+          >
+            <img
+              src={logo}
+              alt="Hair do top"
+              className="h-14 lg:h-24 w-auto object-contain"
+            />
+          </Link>
+
+          {/* Right: CTA Button */}
+          <div className="flex items-center justify-end lg:w-1/3">
+            <Button variant="hero" size="lg" asChild className="hidden sm:inline-flex">
               <Link to="/sedi">Prenota</Link>
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-primary hover:text-accent transition-colors"
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
       </div>
 
