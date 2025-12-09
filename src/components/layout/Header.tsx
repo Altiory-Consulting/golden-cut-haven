@@ -120,7 +120,7 @@ export function Header() {
             <img
               src={logo}
               alt="Hair do top"
-              className="h-16 lg:h-32 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(196,164,106,0.6)] group-hover:scale-105"
+              className="h-20 lg:h-40 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(196,164,106,0.6)] group-hover:scale-105"
             />
           </Link>
 
