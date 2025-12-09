@@ -115,12 +115,12 @@ export function Header() {
           {/* Center: Logo */}
           <Link
             to="/"
-            className="flex-shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+            className="flex-shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2 group"
           >
             <img
               src={logo}
               alt="Hair do top"
-              className="h-14 lg:h-24 w-auto object-contain"
+              className="h-16 lg:h-32 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(196,164,106,0.6)] group-hover:scale-105"
             />
           </Link>
 
