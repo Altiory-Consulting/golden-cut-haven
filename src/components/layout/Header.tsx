@@ -122,12 +122,12 @@ export function Header() {
           {/* Center: Logo */}
           <Link
             to="/"
-            className="flex-shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2 group"
+            className="absolute left-1/2 -translate-x-1/2 group"
           >
             <img
               src={logo}
               alt="Hair do top"
-              className="h-24 lg:h-48 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(196,164,106,0.6)] group-hover:scale-105 animate-fade-in opacity-0"
+              className="h-28 md:h-36 lg:h-48 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(196,164,106,0.6)] group-hover:scale-105 animate-fade-in opacity-0"
               style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
             />
           </Link>
