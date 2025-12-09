@@ -58,13 +58,17 @@ export default function Index() {
     <div className="bg-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+        {/* Background Video */}
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Hair do top luxury salon interior"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="/videos/salone-acerra.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-deep-black via-deep-black/80 to-deep-black/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-deep-black/50" />
         </div>
