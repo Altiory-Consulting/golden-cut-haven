@@ -19,12 +19,16 @@ export default function HairSpa() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0">
-          <img
-            src={hairSpaImage}
-            alt="Hair Spa luxury treatment room"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-deep-black/70" />
+          >
+            <source src="/videos/hair-spa.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-deep-black/50" />
         </div>
         
         <div className="container mx-auto px-6 relative z-10 text-center py-20">
