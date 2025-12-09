@@ -93,7 +93,7 @@ export function Header() {
                 )}
               >
                 <nav className="py-3">
-                  {navigation.map((item) => (
+                  {navigation.map((item, index) => (
                     <Link
                       key={item.name}
                       to={item.href}
@@ -101,8 +101,15 @@ export function Header() {
                         "block px-6 py-3 font-cormorant text-base tracking-wider transition-all duration-300",
                         location.pathname === item.href
                           ? "text-accent bg-primary/5"
-                          : "text-foreground/70 hover:text-primary hover:bg-primary/5"
+                          : "text-foreground/70 hover:text-primary hover:bg-primary/5",
+                        isDropdownOpen 
+                          ? "animate-fade-in opacity-0" 
+                          : "opacity-0"
                       )}
+                      style={{ 
+                        animationDelay: isDropdownOpen ? `${index * 0.08}s` : "0s",
+                        animationFillMode: "forwards"
+                      }}
                     >
                       {item.name}
                     </Link>
