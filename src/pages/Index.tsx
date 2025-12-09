@@ -69,8 +69,8 @@ export default function Index() {
           >
             <source src="/videos/salone-acerra.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-deep-black via-deep-black/80 to-deep-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-deep-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-deep-black/70 via-deep-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-transparent to-deep-black/30" />
         </div>
 
         {/* Content */}
