@@ -12,7 +12,7 @@ const benefits = [
   "Fa durare più a lungo la sensazione di pulito",
 ];
 
-const WHATSAPP_NUMBER = "393XXXXXXXXX"; // Sostituire con il numero reale
+const WHATSAPP_NUMBER = "393891716135";
 const WHATSAPP_MESSAGE = "Ciao! Vorrei prenotare il trattamento Hair Spa in offerta a €65. Grazie!";
 
 export default function HairSpa() {
