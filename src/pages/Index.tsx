@@ -49,7 +49,7 @@ const reviews = [
 const stats = [
   { value: "35+", label: "Anni di Esperienza" },
   { value: "50k+", label: "Clienti Soddisfatti" },
-  { value: "15", label: "Stilisti Esperti" },
+  { value: "9", label: "Stilisti Esperti" },
   { value: "3", label: "Sedi Esclusive" },
 ];
 
