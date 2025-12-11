@@ -6,71 +6,94 @@ import maleDirector from "@/assets/team/male-director.jpg";
 import maleStylist from "@/assets/team/male-stylist.jpg";
 import femaleStylist1 from "@/assets/team/female-stylist-1.jpg";
 import femaleStylist2 from "@/assets/team/female-stylist-2.jpg";
-
-const values = [
-  {
-    icon: Award,
-    title: "Eccellenza",
-    description: "Ogni dettaglio è curato con la massima attenzione per garantire risultati impeccabili.",
-  },
-  {
-    icon: Heart,
-    title: "Passione",
-    description: "L'amore per il nostro lavoro si riflette in ogni servizio che offriamo.",
-  },
-  {
-    icon: Gem,
-    title: "Qualità Premium",
-    description: "Utilizziamo solo prodotti di altissima qualità per i nostri clienti.",
-  },
-];
-
-const teamAcerra = [
-  { name: "Raffaele", role: "Art Hair Director", image: maleDirector },
-  { name: "Anna", role: "Stylist", image: femaleStylist1 },
-  { name: "Giusy", role: "Stylist", image: femaleStylist1 },
-  { name: "Serena", role: "Stylist", image: femaleStylist2 },
-];
-
-const teamIpercoop = [
-  { name: "Nando", role: "Art Hair Director", image: maleDirector },
-  { name: "Matteo", role: "Stylist", image: maleStylist },
-  { name: "Giuliana", role: "Stylist", image: femaleStylist1 },
-  { name: "Roberto", role: "Stylist", image: maleStylist },
-  { name: "Carmela", role: "Stylist", image: femaleStylist1 },
-  { name: "Sofia", role: "Salon Assistant", image: femaleStylist2 },
-  { name: "Elena", role: "Salon Assistant", image: femaleStylist2 },
-  { name: "Emanuele", role: "Receptionist", image: maleStylist },
-];
-
+const values = [{
+  icon: Award,
+  title: "Eccellenza",
+  description: "Ogni dettaglio è curato con la massima attenzione per garantire risultati impeccabili."
+}, {
+  icon: Heart,
+  title: "Passione",
+  description: "L'amore per il nostro lavoro si riflette in ogni servizio che offriamo."
+}, {
+  icon: Gem,
+  title: "Qualità Premium",
+  description: "Utilizziamo solo prodotti di altissima qualità per i nostri clienti."
+}];
+const teamAcerra = [{
+  name: "Raffaele",
+  role: "Art Hair Director",
+  image: maleDirector
+}, {
+  name: "Anna",
+  role: "Stylist",
+  image: femaleStylist1
+}, {
+  name: "Giusy",
+  role: "Stylist",
+  image: femaleStylist1
+}, {
+  name: "Serena",
+  role: "Stylist",
+  image: femaleStylist2
+}];
+const teamIpercoop = [{
+  name: "Nando",
+  role: "Art Hair Director",
+  image: maleDirector
+}, {
+  name: "Matteo",
+  role: "Stylist",
+  image: maleStylist
+}, {
+  name: "Giuliana",
+  role: "Stylist",
+  image: femaleStylist1
+}, {
+  name: "Roberto",
+  role: "Stylist",
+  image: maleStylist
+}, {
+  name: "Carmela",
+  role: "Stylist",
+  image: femaleStylist1
+}, {
+  name: "Sofia",
+  role: "Salon Assistant",
+  image: femaleStylist2
+}, {
+  name: "Elena",
+  role: "Salon Assistant",
+  image: femaleStylist2
+}, {
+  name: "Emanuele",
+  role: "Receptionist",
+  image: maleStylist
+}];
 export default function ChiSiamo() {
-  return (
-    <div className="bg-background">
+  return <div className="bg-background">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
             <source src="/videos/chi-siamo.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-deep-black/50" />
         </div>
         
         <div className="container mx-auto px-6 relative z-10 text-center py-20">
-          <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
+          <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase mb-6 animate-fade-in opacity-0" style={{
+          animationDelay: "0.2s"
+        }}>
             La Nostra Storia
           </p>
-          <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-foreground mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.4s" }}>
+          <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-foreground mb-6 animate-fade-in opacity-0" style={{
+          animationDelay: "0.4s"
+        }}>
             Chi <span className="text-gradient-gold italic">Siamo</span>
           </h1>
-          <p className="font-cormorant text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto animate-fade-in opacity-0" style={{ animationDelay: "0.6s" }}>
-            Oltre 35 anni di passione, eleganza e dedizione alla bellezza
-          </p>
+          <p className="font-cormorant text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto animate-fade-in opacity-0" style={{
+          animationDelay: "0.6s"
+        }}>Oltre 10 anni di passione, eleganza e dedizione alla bellezza</p>
         </div>
       </section>
 
@@ -102,11 +125,7 @@ export default function ChiSiamo() {
             </div>
             <div className="relative animate-fade-in-right opacity-0">
               <div className="aspect-[4/5] overflow-hidden">
-                <img
-                  src={heroImage}
-                  alt="Hair do top history"
-                  className="w-full h-full object-cover"
-                />
+                <img src={heroImage} alt="Hair do top history" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-8 -left-8 w-48 h-48 border border-primary/30" />
               <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/10" />
@@ -153,12 +172,9 @@ export default function ChiSiamo() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={value.title}
-                className="luxury-card p-10 text-center animate-fade-in opacity-0"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
+            {values.map((value, index) => <div key={value.title} className="luxury-card p-10 text-center animate-fade-in opacity-0" style={{
+            animationDelay: `${index * 0.15}s`
+          }}>
                 <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-primary/10 flex items-center justify-center">
                   <value.icon className="w-10 h-10 text-primary" />
                 </div>
@@ -168,8 +184,7 @@ export default function ChiSiamo() {
                 <p className="font-cormorant text-lg text-foreground/60 leading-relaxed">
                   {value.description}
                 </p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -195,18 +210,11 @@ export default function ChiSiamo() {
               </h3>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {teamAcerra.map((member, index) => (
-                <div
-                  key={member.name}
-                  className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              {teamAcerra.map((member, index) => <div key={member.name} className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors" style={{
+              animationDelay: `${index * 0.1}s`
+            }}>
                   <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                   </div>
                   <h4 className="font-playfair text-xl text-foreground mb-1">
                     {member.name}
@@ -214,8 +222,7 @@ export default function ChiSiamo() {
                   <p className="font-cormorant text-primary">
                     {member.role}
                   </p>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
@@ -228,18 +235,11 @@ export default function ChiSiamo() {
               </h3>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {teamIpercoop.map((member, index) => (
-                <div
-                  key={member.name}
-                  className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              {teamIpercoop.map((member, index) => <div key={member.name} className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors" style={{
+              animationDelay: `${index * 0.1}s`
+            }}>
                   <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                   </div>
                   <h4 className="font-playfair text-xl text-foreground mb-1">
                     {member.name}
@@ -247,8 +247,7 @@ export default function ChiSiamo() {
                   <p className="font-cormorant text-primary">
                     {member.role}
                   </p>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -268,6 +267,5 @@ export default function ChiSiamo() {
           </Button>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 }
