@@ -124,8 +124,15 @@ export default function ChiSiamo() {
               </div>
             </div>
             <div className="relative animate-fade-in-right opacity-0">
-              <div className="aspect-[4/5] overflow-hidden">
-                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+              <div className="aspect-[9/16] md:aspect-[4/5] overflow-hidden rounded-sm">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover scale-105"
+                >
                   <source src="/videos/salone-interno.mp4" type="video/mp4" />
                 </video>
               </div>
