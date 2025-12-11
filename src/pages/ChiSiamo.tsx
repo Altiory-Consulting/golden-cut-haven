@@ -125,7 +125,9 @@ export default function ChiSiamo() {
             </div>
             <div className="relative animate-fade-in-right opacity-0">
               <div className="aspect-[4/5] overflow-hidden">
-                <img src={heroImage} alt="Hair do top history" className="w-full h-full object-cover" />
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+                  <source src="/videos/salone-interno.mp4" type="video/mp4" />
+                </video>
               </div>
               <div className="absolute -bottom-8 -left-8 w-48 h-48 border border-primary/30" />
               <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/10" />
