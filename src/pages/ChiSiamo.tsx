@@ -1,10 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Award, Heart, Gem } from "lucide-react";
+import { Award, Heart, Gem, MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-salon.jpg";
-import staff1 from "@/assets/staff-1.jpg";
-import staff2 from "@/assets/staff-2.jpg";
-import staff3 from "@/assets/staff-3.jpg";
 
 const values = [
   {
@@ -24,25 +21,22 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "Alessandra Verdi",
-    role: "Direttrice Creativa",
-    image: staff1,
-    description: "Con oltre 20 anni di esperienza, Alessandra guida il team con visione e creatività.",
-  },
-  {
-    name: "Marco Fontana",
-    role: "Master Stylist",
-    image: staff2,
-    description: "Specializzato in tagli maschili e tecniche moderne di barbering.",
-  },
-  {
-    name: "Sofia Romano",
-    role: "Color Specialist",
-    image: staff3,
-    description: "Artista del colore, crea sfumature uniche e personalizzate.",
-  },
+const teamAcerra = [
+  { name: "Raffaele", role: "Art Hair Director" },
+  { name: "Anna", role: "Stylist" },
+  { name: "Giusy", role: "Stylist" },
+  { name: "Serena", role: "Stylist" },
+];
+
+const teamIpercoop = [
+  { name: "Nando", role: "Art Hair Director" },
+  { name: "Matteo", role: "Stylist" },
+  { name: "Giuliana", role: "Stylist" },
+  { name: "Roberto", role: "Stylist" },
+  { name: "Carmela", role: "Stylist" },
+  { name: "Sofia", role: "Salon Assistant" },
+  { name: "Elena", role: "Salon Assistant" },
+  { name: "Emanuele", role: "Receptionist" },
 ];
 
 export default function ChiSiamo() {
@@ -184,32 +178,66 @@ export default function ChiSiamo() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {team.map((member, index) => (
-              <div
-                key={member.name}
-                className="group animate-fade-in opacity-0"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="relative overflow-hidden aspect-[3/4] mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-transparent opacity-60" />
+          {/* Sede Acerra */}
+          <div className="mb-20">
+            <div className="flex items-center justify-center gap-3 mb-10">
+              <MapPin className="w-5 h-5 text-primary" />
+              <h3 className="font-playfair text-2xl md:text-3xl text-foreground">
+                Sede Acerra
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {teamAcerra.map((member, index) => (
+                <div
+                  key={member.name}
+                  className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="font-playfair text-2xl text-primary">
+                      {member.name.charAt(0)}
+                    </span>
+                  </div>
+                  <h4 className="font-playfair text-xl text-foreground mb-1">
+                    {member.name}
+                  </h4>
+                  <p className="font-cormorant text-primary">
+                    {member.role}
+                  </p>
                 </div>
-                <h3 className="font-playfair text-2xl text-foreground mb-1">
-                  {member.name}
-                </h3>
-                <p className="font-cormorant text-lg text-primary mb-4">
-                  {member.role}
-                </p>
-                <p className="font-cormorant text-foreground/60">
-                  {member.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Sede Ipercoop */}
+          <div>
+            <div className="flex items-center justify-center gap-3 mb-10">
+              <MapPin className="w-5 h-5 text-primary" />
+              <h3 className="font-playfair text-2xl md:text-3xl text-foreground">
+                Sede Ipercoop
+              </h3>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {teamIpercoop.map((member, index) => (
+                <div
+                  key={member.name}
+                  className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="font-playfair text-2xl text-primary">
+                      {member.name.charAt(0)}
+                    </span>
+                  </div>
+                  <h4 className="font-playfair text-xl text-foreground mb-1">
+                    {member.name}
+                  </h4>
+                  <p className="font-cormorant text-primary">
+                    {member.role}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
