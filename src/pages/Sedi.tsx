@@ -6,8 +6,8 @@ const locations = [{
   address: "Via Francesco Castaldi, 12",
   cap: "80011",
   province: "NA",
-  phone: "+39 081 0000000",
-  whatsapp: "39XXXXXXXXXX", // Sostituire con numero reale
+  phone: "+39 081 062 3508",
+  whatsapp: "393891716135",
   hours: "Lun-Ven: 9:00-20:00 | Sab: 9:00-19:00",
   featured: true
 }, {
@@ -16,8 +16,8 @@ const locations = [{
   address: "Via Santa Maria la Nova, 1",
   cap: "80021",
   province: "NA",
-  phone: "+39 081 0000000",
-  whatsapp: "39XXXXXXXXXX", // Sostituire con numero reale
+  phone: "+39 081 860 7157",
+  whatsapp: "393511531005",
   hours: "Lun-Ven: 9:00-20:00 | Sab: 9:00-19:00",
   featured: false
 }];
