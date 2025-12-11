@@ -50,7 +50,7 @@ const stats = [
   { value: "35+", label: "Anni di Esperienza" },
   { value: "50k+", label: "Clienti Soddisfatti" },
   { value: "9", label: "Stilisti Esperti" },
-  { value: "3", label: "Sedi Esclusive" },
+  { value: "2", label: "Sedi Esclusive" },
 ];
 
 export default function Index() {
