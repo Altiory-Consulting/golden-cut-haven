@@ -1,23 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Check, Sparkles, Leaf, Flame } from "lucide-react";
+import { Check, Sparkles, Leaf, Flame, MessageCircle, Gift, Clock, Star } from "lucide-react";
 import hairSpaImage from "@/assets/hair-spa.jpg";
 
 const benefits = [
   "Pulisce a fondo il cuoio capelluto",
   "Rimuove impurità, sebo e residui",
   "Riduce prurito, forfora o secchezza",
-  "Rilassa la mente e la cute grazie ai massaggi",
+  "Rilassa la mente e la cute grazie ai massaggi mirati",
   "Rinforza i capelli dalla radice",
   "Dona leggerezza, volume e luminosità",
   "Fa durare più a lungo la sensazione di pulito",
 ];
 
+const WHATSAPP_NUMBER = "393XXXXXXXXX"; // Sostituire con il numero reale
+const WHATSAPP_MESSAGE = "Ciao! Vorrei prenotare il trattamento Hair Spa in offerta a €65. Grazie!";
+
 export default function HairSpa() {
+  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
   return (
     <div className="bg-background">
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-24">
+      {/* Hero Section with Offer */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <video
             autoPlay
@@ -28,23 +32,74 @@ export default function HairSpa() {
           >
             <source src="/videos/hair-spa.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-deep-black/50" />
+          <div className="absolute inset-0 bg-deep-black/60" />
         </div>
         
         <div className="container mx-auto px-6 relative z-10 text-center py-20">
-          <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
-            ✨ Benessere & Relax
-          </p>
-          <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-foreground mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.4s" }}>
+          <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/50 rounded-full px-6 py-2 mb-8 animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
+            <Gift className="w-4 h-4 text-primary" />
+            <span className="font-cormorant text-primary text-sm tracking-wide">OFFERTA LIMITATA - 50% DI SCONTO</span>
+          </div>
+          
+          <h1 className="font-playfair text-5xl md:text-6xl lg:text-8xl text-foreground mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.4s" }}>
             Hair <span className="text-gradient-gold italic">Spa</span>
           </h1>
-          <p className="font-cormorant text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto mb-10 animate-fade-in opacity-0" style={{ animationDelay: "0.6s" }}>
-            La tua testa merita un'oasi di benessere
+          
+          <p className="font-cormorant text-xl md:text-2xl text-foreground/80 max-w-2xl mx-auto mb-10 animate-fade-in opacity-0" style={{ animationDelay: "0.6s" }}>
+            Il rituale di benessere che rigenera il cuoio capelluto e trasforma i tuoi capelli
           </p>
-          <div className="animate-fade-in opacity-0" style={{ animationDelay: "0.8s" }}>
-            <Button variant="luxury" size="xl" asChild>
-              <Link to="/sedi">Prenota il Tuo Trattamento</Link>
+
+          {/* Price Display */}
+          <div className="mb-10 animate-fade-in opacity-0" style={{ animationDelay: "0.8s" }}>
+            <div className="flex items-center justify-center gap-4 mb-2">
+              <span className="font-playfair text-3xl md:text-4xl text-foreground/50 line-through">€130</span>
+              <span className="font-playfair text-6xl md:text-7xl text-primary">€65</span>
+            </div>
+            <p className="font-cormorant text-foreground/60">Risparmi €65 sul trattamento completo</p>
+          </div>
+
+          {/* WhatsApp CTA */}
+          <div className="animate-fade-in opacity-0" style={{ animationDelay: "1s" }}>
+            <Button 
+              size="xl" 
+              asChild 
+              className="bg-[#25D366] hover:bg-[#128C7E] text-white text-lg px-10 py-7 rounded-full shadow-2xl shadow-[#25D366]/30 transition-all duration-300 hover:scale-105"
+            >
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-6 h-6 mr-3" />
+                Prenota su WhatsApp
+              </a>
             </Button>
+            <p className="font-cormorant text-foreground/50 text-sm mt-4">
+              Rispondiamo entro pochi minuti
+            </p>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-primary rounded-full mt-2" />
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Badges */}
+      <section className="py-12 bg-soft-black border-y border-primary/10">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            <div className="flex items-center gap-3">
+              <Star className="w-5 h-5 text-primary fill-primary" />
+              <span className="font-cormorant text-foreground/70">Prodotti Premium</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Clock className="w-5 h-5 text-primary" />
+              <span className="font-cormorant text-foreground/70">45 min di Relax</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-primary" />
+              <span className="font-cormorant text-foreground/70">Risultati Immediati</span>
+            </div>
           </div>
         </div>
       </section>
@@ -82,6 +137,12 @@ export default function HairSpa() {
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 w-40 h-40 border border-primary/30" />
+              
+              {/* Price Badge on Image */}
+              <div className="absolute top-6 right-6 bg-primary text-deep-black px-4 py-3 rounded-lg">
+                <p className="font-playfair text-sm line-through opacity-70">€130</p>
+                <p className="font-playfair text-3xl font-bold">€65</p>
+              </div>
             </div>
             
             <div>
@@ -98,10 +159,21 @@ export default function HairSpa() {
                 Questo rituale esclusivo deterge in profondità, elimina impurità, sebo e forfora, 
                 e ristabilisce l'equilibrio naturale del cuoio capelluto.
               </p>
-              <p className="font-cormorant text-xl text-foreground/70 leading-relaxed">
+              <p className="font-cormorant text-xl text-foreground/70 leading-relaxed mb-10">
                 Attraverso massaggi mirati e prodotti specifici, la cute si distende, 
                 i follicoli si riattivano, e i capelli ritrovano forza, vitalità e luce.
               </p>
+              
+              <Button 
+                size="lg" 
+                asChild 
+                className="bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full"
+              >
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Prenota Ora a €65
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -112,7 +184,7 @@ export default function HairSpa() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase mb-4">
-              💆‍♀️ I Benefici
+              I Benefici
             </p>
             <h2 className="font-playfair text-4xl md:text-5xl text-foreground gold-underline inline-block pb-4">
               Cosa Fa per Te
@@ -127,7 +199,7 @@ export default function HairSpa() {
                   className="luxury-card p-6 flex items-center gap-5 animate-fade-in opacity-0"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-10 h-10 rounded-full border border-primary/50 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full border border-primary/50 flex items-center justify-center flex-shrink-0 bg-primary/10">
                     <Check className="w-5 h-5 text-primary" />
                   </div>
                   <span className="font-cormorant text-xl text-foreground/90">
@@ -147,7 +219,7 @@ export default function HairSpa() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <Leaf className="w-8 h-8 text-primary" />
               <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase">
-                🌿 Perché Provarlo
+                Perché Provarlo
               </p>
             </div>
             <h2 className="font-playfair text-4xl md:text-5xl text-foreground mb-8">
@@ -177,7 +249,7 @@ export default function HairSpa() {
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Flame className="w-8 h-8 text-accent" />
                 <p className="font-cormorant text-accent text-lg tracking-[0.3em] uppercase">
-                  🔥 In Breve
+                  In Breve
                 </p>
               </div>
               <p className="font-cormorant text-2xl md:text-3xl text-foreground/90 leading-relaxed mb-6">
@@ -192,22 +264,46 @@ export default function HairSpa() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-champagne">
+      {/* Final CTA Section */}
+      <section className="py-24 lg:py-32 bg-gradient-to-b from-soft-black to-deep-black">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="font-playfair text-4xl md:text-5xl text-deep-black mb-6">
-            Regala o Regalati un'Esperienza Unica
-          </h2>
-          <p className="font-cormorant text-xl text-dark-gold max-w-xl mx-auto mb-10">
-            Prenota oggi il tuo trattamento Hair Spa e scopri il piacere di capelli rigenerati
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button variant="champagne" size="xl" asChild className="bg-deep-black text-champagne hover:bg-deep-black/90">
-              <Link to="/sedi">Prenota il Tuo Trattamento</Link>
+          <div className="max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/50 rounded-full px-6 py-2 mb-8">
+              <Gift className="w-4 h-4 text-primary" />
+              <span className="font-cormorant text-primary text-sm tracking-wide">OFFERTA SPECIALE</span>
+            </div>
+            
+            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+              Non Perdere Questa Occasione
+            </h2>
+            
+            <p className="font-cormorant text-xl text-foreground/70 max-w-xl mx-auto mb-10">
+              Prenota oggi il tuo trattamento Hair Spa e scopri il piacere di capelli rigenerati
+            </p>
+
+            {/* Price Display */}
+            <div className="mb-10">
+              <div className="flex items-center justify-center gap-4 mb-2">
+                <span className="font-playfair text-3xl text-foreground/50 line-through">€130</span>
+                <span className="font-playfair text-6xl text-primary">€65</span>
+              </div>
+              <p className="font-cormorant text-foreground/60">Sconto del 50% - Offerta limitata</p>
+            </div>
+
+            <Button 
+              size="xl" 
+              asChild 
+              className="bg-[#25D366] hover:bg-[#128C7E] text-white text-lg px-12 py-8 rounded-full shadow-2xl shadow-[#25D366]/30 transition-all duration-300 hover:scale-105"
+            >
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-6 h-6 mr-3" />
+                Prenota Subito su WhatsApp
+              </a>
             </Button>
-            <Button variant="outline" size="xl" asChild className="border-deep-black text-deep-black hover:bg-deep-black hover:text-champagne">
-              <Link to="/listini">Vedi Tutti i Prezzi</Link>
-            </Button>
+            
+            <p className="font-cormorant text-foreground/50 text-sm mt-6">
+              Clicca il pulsante per aprire WhatsApp e prenotare direttamente
+            </p>
           </div>
         </div>
       </section>
