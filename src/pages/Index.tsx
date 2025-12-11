@@ -236,21 +236,27 @@ export default function Index() {
           </p>
         </div>
         
-        <div className="flex justify-center items-center gap-12 md:gap-20 flex-wrap px-6">
-          {[
-            { src: lorealLogo, alt: "L'Oréal" },
-            { src: kevinMurphyLogo, alt: "Kevin Murphy" },
-            { src: leonorGreylLogo, alt: "Leonor Greyl" },
-            { src: ghdLogo, alt: "GHD" },
-            { src: nakLogo, alt: "NAK Hair" },
-          ].map((partner, index) => (
-            <img
-              key={index}
-              src={partner.src}
-              alt={partner.alt}
-              className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-            />
-          ))}
+        <div className="relative w-full overflow-hidden">
+          <div className="flex animate-marquee whitespace-nowrap">
+            {[...Array(4)].map((_, setIndex) => (
+              <div key={setIndex} className="flex items-center shrink-0">
+                {[
+                  { src: lorealLogo, alt: "L'Oréal" },
+                  { src: kevinMurphyLogo, alt: "Kevin Murphy" },
+                  { src: leonorGreylLogo, alt: "Leonor Greyl" },
+                  { src: ghdLogo, alt: "GHD" },
+                  { src: nakLogo, alt: "NAK Hair" },
+                ].map((partner, index) => (
+                  <img
+                    key={`${setIndex}-${index}`}
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 mx-12 md:mx-16"
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
