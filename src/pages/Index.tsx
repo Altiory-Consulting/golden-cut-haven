@@ -4,6 +4,11 @@ import { Scissors, Palette, Sparkles, Star, Users, Award } from "lucide-react";
 import heroImage from "@/assets/hero-salon.jpg";
 import hairModel1 from "@/assets/hair-model-1.jpg";
 import hairModel2 from "@/assets/hair-model-2.jpg";
+import ghdLogo from "@/assets/partners/ghd.png";
+import kevinMurphyLogo from "@/assets/partners/kevin-murphy.png";
+import leonorGreylLogo from "@/assets/partners/leonor-greyl.png";
+import lorealLogo from "@/assets/partners/loreal.png";
+import nakLogo from "@/assets/partners/nak.png";
 
 const services = [
   {
@@ -234,14 +239,20 @@ export default function Index() {
         <div className="relative">
           <div className="flex animate-marquee">
             {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center gap-16 px-8">
-                {["L'Oréal", "Kérastase", "Wella", "Schwarzkopf", "Redken", "Olaplex", "GHD", "Davines"].map((partner, index) => (
-                  <span
+              <div key={setIndex} className="flex items-center gap-20 px-10">
+                {[
+                  { src: lorealLogo, alt: "L'Oréal" },
+                  { src: kevinMurphyLogo, alt: "Kevin Murphy" },
+                  { src: leonorGreylLogo, alt: "Leonor Greyl" },
+                  { src: ghdLogo, alt: "GHD" },
+                  { src: nakLogo, alt: "NAK Hair" },
+                ].map((partner, index) => (
+                  <img
                     key={`${setIndex}-${index}`}
-                    className="font-playfair text-2xl md:text-3xl text-foreground/30 hover:text-primary transition-colors duration-300 whitespace-nowrap"
-                  >
-                    {partner}
-                  </span>
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
                 ))}
               </div>
             ))}
