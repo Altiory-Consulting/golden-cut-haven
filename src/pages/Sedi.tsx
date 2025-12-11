@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MapPin, Clock, Navigation } from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle } from "lucide-react";
 const locations = [{
   city: "Acerra",
   name: "Sede Acerra",
@@ -7,8 +7,8 @@ const locations = [{
   cap: "80011",
   province: "NA",
   phone: "+39 081 0000000",
+  whatsapp: "39XXXXXXXXXX", // Sostituire con numero reale
   hours: "Lun-Ven: 9:00-20:00 | Sab: 9:00-19:00",
-  mapUrl: "https://maps.google.com/?q=Via+Francesco+Castaldi+12+Acerra+NA",
   featured: true
 }, {
   city: "Afragola",
@@ -17,8 +17,8 @@ const locations = [{
   cap: "80021",
   province: "NA",
   phone: "+39 081 0000000",
+  whatsapp: "39XXXXXXXXXX", // Sostituire con numero reale
   hours: "Lun-Ven: 9:00-20:00 | Sab: 9:00-19:00",
-  mapUrl: "https://maps.google.com/?q=Via+Santa+Maria+la+Nova+1+Afragola+NA",
   featured: false
 }];
 export default function Sedi() {
@@ -95,10 +95,10 @@ export default function Sedi() {
                       Chiama Ora
                     </a>
                   </Button>
-                  <Button variant="outline" size="lg" className="w-full" asChild>
-                    <a href={location.mapUrl} target="_blank" rel="noopener noreferrer">
-                      <Navigation className="w-4 h-4 mr-2" />
-                      Indicazioni
+                  <Button size="lg" className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white" asChild>
+                    <a href={`https://wa.me/${location.whatsapp}?text=${encodeURIComponent("Ciao! Vorrei prenotare un appuntamento. Grazie!")}`} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Prenota su WhatsApp
                     </a>
                   </Button>
                 </div>
