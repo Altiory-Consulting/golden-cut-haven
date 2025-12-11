@@ -229,34 +229,28 @@ export default function Index() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-16 bg-soft-black border-t border-primary/10 overflow-hidden">
-        <div className="container mx-auto px-6 mb-10">
+      <section className="py-20 bg-soft-black border-t border-primary/10 overflow-hidden">
+        <div className="container mx-auto px-6 mb-12">
           <p className="font-cormorant text-primary text-center text-lg tracking-[0.3em] uppercase">
             I Nostri Partner
           </p>
         </div>
         
-        <div className="relative">
-          <div className="flex animate-marquee">
-            {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center gap-20 px-10">
-                {[
-                  { src: lorealLogo, alt: "L'Oréal" },
-                  { src: kevinMurphyLogo, alt: "Kevin Murphy" },
-                  { src: leonorGreylLogo, alt: "Leonor Greyl" },
-                  { src: ghdLogo, alt: "GHD" },
-                  { src: nakLogo, alt: "NAK Hair" },
-                ].map((partner, index) => (
-                  <img
-                    key={`${setIndex}-${index}`}
-                    src={partner.src}
-                    alt={partner.alt}
-                    className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
+        <div className="flex justify-center items-center gap-12 md:gap-20 flex-wrap px-6">
+          {[
+            { src: lorealLogo, alt: "L'Oréal" },
+            { src: kevinMurphyLogo, alt: "Kevin Murphy" },
+            { src: leonorGreylLogo, alt: "Leonor Greyl" },
+            { src: ghdLogo, alt: "GHD" },
+            { src: nakLogo, alt: "NAK Hair" },
+          ].map((partner, index) => (
+            <img
+              key={index}
+              src={partner.src}
+              alt={partner.alt}
+              className="h-10 md:h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+            />
+          ))}
         </div>
       </section>
 
