@@ -223,6 +223,32 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <section className="py-16 bg-soft-black border-t border-primary/10 overflow-hidden">
+        <div className="container mx-auto px-6 mb-10">
+          <p className="font-cormorant text-primary text-center text-lg tracking-[0.3em] uppercase">
+            I Nostri Partner
+          </p>
+        </div>
+        
+        <div className="relative">
+          <div className="flex animate-marquee">
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex items-center gap-16 px-8">
+                {["L'Oréal", "Kérastase", "Wella", "Schwarzkopf", "Redken", "Olaplex", "GHD", "Davines"].map((partner, index) => (
+                  <span
+                    key={`${setIndex}-${index}`}
+                    className="font-playfair text-2xl md:text-3xl text-foreground/30 hover:text-primary transition-colors duration-300 whitespace-nowrap"
+                  >
+                    {partner}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Reviews Section */}
       <section className="py-24 lg:py-32 relative">
         <div className="container mx-auto px-6">
