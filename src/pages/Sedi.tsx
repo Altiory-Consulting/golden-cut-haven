@@ -50,7 +50,7 @@ export default function Sedi() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {locations.map((location, index) => <div key={location.city} className={`luxury-card p-8 lg:p-10 animate-fade-in opacity-0 ${location.featured ? "lg:ring-2 lg:ring-primary/50" : ""}`} style={{
+            {locations.map((location, index) => <div key={location.city} className="luxury-card p-8 lg:p-10 animate-fade-in opacity-0 ring-1 ring-primary/30" style={{
             animationDelay: `${index * 0.15}s`
           }}>
                 {location.featured}
