@@ -49,12 +49,16 @@ export default function ChiSiamo() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Hair do top salon"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-deep-black/80" />
+          >
+            <source src="/videos/chi-siamo.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-deep-black/50" />
         </div>
         
         <div className="container mx-auto px-6 relative z-10 text-center py-20">
