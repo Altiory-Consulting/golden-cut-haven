@@ -201,7 +201,7 @@ export default function ChiSiamo() {
                   className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
+                  <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
                     <img 
                       src={member.image} 
                       alt={member.name}
@@ -234,7 +234,7 @@ export default function ChiSiamo() {
                   className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
+                  <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
                     <img 
                       src={member.image} 
                       alt={member.name}
