@@ -2,6 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Heart, Gem, MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-salon.jpg";
+import maleDirector from "@/assets/team/male-director.jpg";
+import maleStylist from "@/assets/team/male-stylist.jpg";
+import femaleStylist1 from "@/assets/team/female-stylist-1.jpg";
+import femaleStylist2 from "@/assets/team/female-stylist-2.jpg";
 
 const values = [
   {
@@ -22,21 +26,21 @@ const values = [
 ];
 
 const teamAcerra = [
-  { name: "Raffaele", role: "Art Hair Director" },
-  { name: "Anna", role: "Stylist" },
-  { name: "Giusy", role: "Stylist" },
-  { name: "Serena", role: "Stylist" },
+  { name: "Raffaele", role: "Art Hair Director", image: maleDirector },
+  { name: "Anna", role: "Stylist", image: femaleStylist1 },
+  { name: "Giusy", role: "Stylist", image: femaleStylist1 },
+  { name: "Serena", role: "Stylist", image: femaleStylist2 },
 ];
 
 const teamIpercoop = [
-  { name: "Nando", role: "Art Hair Director" },
-  { name: "Matteo", role: "Stylist" },
-  { name: "Giuliana", role: "Stylist" },
-  { name: "Roberto", role: "Stylist" },
-  { name: "Carmela", role: "Stylist" },
-  { name: "Sofia", role: "Salon Assistant" },
-  { name: "Elena", role: "Salon Assistant" },
-  { name: "Emanuele", role: "Receptionist" },
+  { name: "Nando", role: "Art Hair Director", image: maleDirector },
+  { name: "Matteo", role: "Stylist", image: maleStylist },
+  { name: "Giuliana", role: "Stylist", image: femaleStylist1 },
+  { name: "Roberto", role: "Stylist", image: maleStylist },
+  { name: "Carmela", role: "Stylist", image: femaleStylist1 },
+  { name: "Sofia", role: "Salon Assistant", image: femaleStylist2 },
+  { name: "Elena", role: "Salon Assistant", image: femaleStylist2 },
+  { name: "Emanuele", role: "Receptionist", image: maleStylist },
 ];
 
 export default function ChiSiamo() {
@@ -193,10 +197,12 @@ export default function ChiSiamo() {
                   className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="font-playfair text-2xl text-primary">
-                      {member.name.charAt(0)}
-                    </span>
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h4 className="font-playfair text-xl text-foreground mb-1">
                     {member.name}
@@ -224,10 +230,12 @@ export default function ChiSiamo() {
                   className="luxury-card p-6 text-center animate-fade-in opacity-0 hover:border-primary/40 transition-colors"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="font-playfair text-2xl text-primary">
-                      {member.name.charAt(0)}
-                    </span>
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-primary/30">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h4 className="font-playfair text-xl text-foreground mb-1">
                     {member.name}
