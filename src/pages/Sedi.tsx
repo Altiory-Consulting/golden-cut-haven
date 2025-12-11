@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle, ChevronUp } from "lucide-react";
 const locations = [{
   city: "Acerra",
   name: "Sede Acerra",
@@ -47,7 +47,7 @@ export default function Sedi() {
       </section>
 
       {/* Locations Grid */}
-      <section className="py-16 lg:py-24">
+      <section id="sedi-cards" className="py-16 lg:py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {locations.map((location, index) => <div key={location.city} className="luxury-card p-8 lg:p-10 animate-fade-in opacity-0 ring-1 ring-primary/30" style={{
@@ -135,11 +135,13 @@ export default function Sedi() {
             Contattaci per prenotare una consulenza gratuita presso la sede più vicina a te
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button variant="luxury" size="xl" asChild>
-              <a href="tel:+390212345678">
-                <Phone className="w-5 h-5 mr-2" />
-                Chiama per Prenotare
-              </a>
+            <Button 
+              variant="luxury" 
+              size="xl" 
+              onClick={() => document.getElementById('sedi-cards')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <ChevronUp className="w-5 h-5 mr-2" />
+              Scegli la Sede
             </Button>
           </div>
         </div>
