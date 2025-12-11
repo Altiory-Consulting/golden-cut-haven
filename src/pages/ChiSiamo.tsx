@@ -78,25 +78,23 @@ export default function ChiSiamo() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in-left opacity-0">
               <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase mb-4">
-                Dal 1989
+                Dal 2019
               </p>
               <h2 className="font-playfair text-4xl md:text-5xl text-foreground mb-8">
-                Una Tradizione di Eccellenza
+                La Nostra Storia: Dove Tutto È Iniziato
               </h2>
               <div className="space-y-6 font-cormorant text-lg text-foreground/70 leading-relaxed">
                 <p>
-                  Hair do top nasce nel cuore di Milano nel 1989, dalla visione di creare
-                  un luogo dove l'arte dell'hairstyling incontra il lusso più raffinato.
+                  Nel 2019, dopo anni trascorsi fianco a fianco come colleghi, <strong className="text-foreground">Raffaele Sassone</strong> e <strong className="text-foreground">Nando Fornaro</strong> hanno deciso di trasformare un sogno condiviso in realtà.
                 </p>
                 <p>
-                  Quello che è iniziato come un piccolo atelier di bellezza è diventato
-                  oggi un punto di riferimento nel panorama italiano della cura del capello,
-                  con tre sedi esclusive nelle città più prestigiose.
+                  Per anni avevano lavorato nello stesso salone, crescendo, imparando, affinando tecnica e visione. Quel luogo non era solo un posto di lavoro: era il simbolo di un percorso, di una passione che li univa e che meritava un futuro ancora più grande.
                 </p>
                 <p>
-                  La nostra filosofia si basa sulla convinzione che ogni cliente meriti
-                  un'esperienza unica, personalizzata e indimenticabile. Ogni visita nel
-                  nostro salone è un viaggio nel mondo della bellezza.
+                  Così, con coraggio e determinazione, hanno scelto di rilevare il salone in cui erano nati professionalmente… e di rivoluzionarlo completamente. Nuova identità, nuovi servizi, nuovi standard: ogni dettaglio è stato ripensato per offrire un'esperienza diversa, più elegante, più ricercata, più autentica.
+                </p>
+                <p>
+                  Il risultato? Un salone che non era più soltanto il punto di arrivo del loro percorso, ma il punto di partenza di una visione tutta nuova.
                 </p>
               </div>
             </div>
@@ -110,6 +108,31 @@ export default function ChiSiamo() {
               </div>
               <div className="absolute -bottom-8 -left-8 w-48 h-48 border border-primary/30" />
               <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/10" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Continuation Section */}
+      <section className="py-24 lg:py-32 bg-soft-black">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8 font-cormorant text-lg md:text-xl text-foreground/70 leading-relaxed text-center">
+              <p>
+                Negli anni, grazie alla dedizione, all'amore per il mestiere e alla fiducia dei clienti, il sogno ha continuato a crescere.
+              </p>
+              <p className="text-primary font-playfair text-2xl md:text-3xl">
+                E nel 2025 è arrivato il momento di compiere un nuovo passo:
+              </p>
+              <p>
+                L'apertura di una seconda sede, simbolo dell'espansione di un progetto che non si è mai fermato e che continua a evolversi, giorno dopo giorno.
+              </p>
+              <p>
+                Oggi, <strong className="text-foreground">Raffaele</strong> e <strong className="text-foreground">Nando</strong> guidano una realtà che unisce professionalità, cura e un'idea di bellezza che va oltre il semplice taglio: è un luogo dove le persone si sentono ascoltate, valorizzate e trasformate.
+              </p>
+              <p className="text-primary italic text-2xl font-playfair pt-8">
+                "E questa, per noi, è solo l'inizio."
+              </p>
             </div>
           </div>
         </div>
