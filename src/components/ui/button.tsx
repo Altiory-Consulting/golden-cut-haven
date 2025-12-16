@@ -5,19 +5,20 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 font-cormorant tracking-widest uppercase",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 font-cormorant tracking-widest uppercase active:scale-[0.98]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-accent rounded-sm",
+        default: "bg-primary text-primary-foreground hover:bg-accent hover:shadow-md hover:shadow-primary/20 rounded-sm",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-sm",
-        outline: "border border-primary/50 bg-transparent text-primary hover:border-accent hover:text-accent hover:bg-primary/5 rounded-sm",
+        outline: "border border-primary/50 bg-transparent text-primary hover:border-accent hover:text-accent hover:bg-primary/5 hover:shadow-md hover:shadow-primary/10 rounded-sm",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-sm",
         ghost: "text-primary hover:text-accent hover:bg-primary/5",
         link: "text-primary underline-offset-4 hover:underline hover:text-accent",
-        luxury: "bg-gradient-to-r from-primary to-accent text-deep-black hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02] rounded-sm",
-        hero: "bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground text-base tracking-[0.2em] rounded-sm",
-        champagne: "bg-champagne text-deep-black hover:bg-champagne/90 rounded-sm",
+        luxury: "bg-gradient-to-r from-primary to-accent text-deep-black hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.03] rounded-sm relative overflow-hidden",
+        hero: "bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/20 text-base tracking-[0.2em] rounded-sm",
+        champagne: "bg-champagne text-deep-black hover:bg-champagne/90 hover:shadow-md rounded-sm",
+        whatsapp: "bg-[#25D366] hover:bg-[#128C7E] text-white hover:shadow-xl hover:shadow-[#25D366]/30 hover:scale-[1.03] rounded-full",
       },
       size: {
         default: "h-10 px-6 py-2",

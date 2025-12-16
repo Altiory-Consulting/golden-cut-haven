@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { PageTransition } from "@/components/animations/PageTransition";
 import Index from "./pages/Index";
 import ChiSiamo from "./pages/ChiSiamo";
 import Sedi from "./pages/Sedi";
@@ -22,14 +23,16 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <Layout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/chi-siamo" element={<ChiSiamo />} />
-            <Route path="/sedi" element={<Sedi />} />
-            <Route path="/listini" element={<Listini />} />
-            <Route path="/hair-spa" element={<HairSpa />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/chi-siamo" element={<ChiSiamo />} />
+              <Route path="/sedi" element={<Sedi />} />
+              <Route path="/listini" element={<Listini />} />
+              <Route path="/hair-spa" element={<HairSpa />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </PageTransition>
         </Layout>
       </BrowserRouter>
     </TooltipProvider>
