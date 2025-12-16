@@ -140,5 +140,64 @@
   .luxury-card:hover {
     @apply border-primary/40;
     box-shadow: 0 0 40px hsl(40 45% 59% / 0.1);
+    transform: translateY(-2px);
   }
+
+  /* Enhanced micro-interactions */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px hsl(40 45% 59% / 0.15);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px hsl(40 45% 59% / 0.2);
+  }
+
+  .image-hover {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .image-hover:hover {
+    transform: scale(1.05);
+  }
+
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, hsl(40 45% 59%), hsl(42 68% 70%));
+    transition: width 0.3s ease;
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Stagger animation helper */
+  .stagger-children > * {
+    opacity: 0;
+    animation: fade-in 0.5s ease forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
 }
