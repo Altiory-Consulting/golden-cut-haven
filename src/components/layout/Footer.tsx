@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
+import { Instagram, Facebook, Phone, Mail, MapPin, Clock, MessageCircle, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const socialLinks = [
   { icon: Instagram, href: "#", label: "Instagram" },
@@ -13,7 +16,40 @@ const quickLinks = [
   { name: "Hair Spa", href: "/hair-spa" },
 ];
 
+const locations = [
+  {
+    name: "Sede Acerra",
+    city: "Acerra",
+    address: "Via Francesco Castaldi, 12",
+    cap: "80011",
+    province: "NA",
+    phone: "+39 081 062 3508",
+    whatsapp: "393891716135",
+    hours: [
+      { day: "Lunedì", time: "Chiuso" },
+      { day: "Mar - Sab", time: "9:00 - 18:30" },
+      { day: "Domenica", time: "Chiuso" },
+    ],
+  },
+  {
+    name: "Sede Le Porte di Napoli",
+    city: "Afragola",
+    address: "Via Santa Maria la Nova, 1",
+    cap: "80021",
+    province: "NA",
+    phone: "+39 081 860 7157",
+    whatsapp: "393511531005",
+    hours: [
+      { day: "Lunedì", time: "10:00 - 19:30" },
+      { day: "Mar - Sab", time: "9:00 - 19:30" },
+      { day: "Domenica", time: "10:00 - 19:30" },
+    ],
+  },
+];
+
 export function Footer() {
+  const [selectedLocation, setSelectedLocation] = useState<typeof locations[0] | null>(null);
+
   return (
     <footer className="bg-soft-black border-t border-primary/20">
       <div className="container mx-auto px-6 py-16 lg:py-20">
@@ -27,7 +63,7 @@ export function Footer() {
               Hair do top
             </Link>
             <p className="mt-6 text-foreground/60 font-cormorant text-lg leading-relaxed">
-              L'eccellenza nella cura dei capelli dal 1985. Un'esperienza di
+              L'eccellenza nella cura dei capelli dal 2019. Un'esperienza di
               lusso per la tua bellezza.
             </p>
             <div className="flex space-x-4 mt-8">
@@ -63,47 +99,39 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contatti & Orari merged */}
           <div>
             <h4 className="font-playfair text-xl text-primary mb-6">
-              Contatti
+              Contatti & Orari
             </h4>
             <ul className="space-y-4">
               <li className="flex items-center space-x-3 text-foreground/70">
-                <Phone size={18} className="text-primary" />
-                <span className="font-cormorant text-lg">+39 02 1234567</span>
-              </li>
-              <li className="flex items-center space-x-3 text-foreground/70">
-                <Mail size={18} className="text-primary" />
+                <Mail size={18} className="text-primary flex-shrink-0" />
                 <span className="font-cormorant text-lg">info@hairdotop.it</span>
               </li>
-              <li className="flex items-start space-x-3 text-foreground/70">
-                <MapPin size={18} className="text-primary mt-1" />
-                <span className="font-cormorant text-lg">
-                  Via della Moda, 15
-                  <br />
-                  20121 Milano
-                </span>
-              </li>
             </ul>
+            <p className="mt-4 font-cormorant text-foreground/50 text-sm">
+              Per orari e contatti specifici, seleziona una sede
+            </p>
           </div>
 
-          {/* Hours */}
+          {/* Le Nostre Sedi */}
           <div>
-            <h4 className="font-playfair text-xl text-primary mb-6">Orari</h4>
-            <ul className="space-y-3 font-cormorant text-lg text-foreground/70">
-              <li className="flex justify-between">
-                <span>Lun - Ven</span>
-                <span className="text-primary">9:00 - 20:00</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sabato</span>
-                <span className="text-primary">9:00 - 19:00</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Domenica</span>
-                <span className="text-muted-foreground">Chiuso</span>
-              </li>
+            <h4 className="font-playfair text-xl text-primary mb-6">
+              Le Nostre Sedi
+            </h4>
+            <ul className="space-y-4">
+              {locations.map((location) => (
+                <li key={location.name}>
+                  <button
+                    onClick={() => setSelectedLocation(location)}
+                    className="font-cormorant text-lg text-foreground/70 hover:text-accent transition-colors duration-300 text-left underline-offset-4 hover:underline flex items-center gap-2"
+                  >
+                    <MapPin size={16} className="text-primary flex-shrink-0" />
+                    {location.name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -131,6 +159,80 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Location Popup */}
+      <Dialog open={!!selectedLocation} onOpenChange={() => setSelectedLocation(null)}>
+        <DialogContent className="bg-soft-black border-primary/30 max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-playfair text-2xl text-primary">
+              {selectedLocation?.name}
+            </DialogTitle>
+          </DialogHeader>
+          
+          {selectedLocation && (
+            <div className="space-y-6 mt-4">
+              {/* Indirizzo */}
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-cormorant text-lg text-foreground">
+                    {selectedLocation.address}
+                  </p>
+                  <p className="font-cormorant text-foreground/60">
+                    {selectedLocation.cap} {selectedLocation.city} ({selectedLocation.province})
+                  </p>
+                </div>
+              </div>
+
+              {/* Telefono */}
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <a 
+                  href={`tel:${selectedLocation.phone.replace(/\s/g, "")}`}
+                  className="font-cormorant text-lg text-foreground hover:text-accent transition-colors"
+                >
+                  {selectedLocation.phone}
+                </a>
+              </div>
+
+              {/* Orari */}
+              <div className="flex items-start gap-3">
+                <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <div className="space-y-2 flex-1">
+                  {selectedLocation.hours.map((h) => (
+                    <div key={h.day} className="flex justify-between font-cormorant text-lg">
+                      <span className="text-foreground/70">{h.day}</span>
+                      <span className={h.time === "Chiuso" ? "text-muted-foreground" : "text-primary"}>
+                        {h.time}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex flex-col gap-3 pt-4">
+                <Button variant="luxury" asChild>
+                  <a href={`tel:${selectedLocation.phone.replace(/\s/g, "")}`}>
+                    <Phone className="w-4 h-4 mr-2" />
+                    Chiama Ora
+                  </a>
+                </Button>
+                <Button className="bg-[#25D366] hover:bg-[#128C7E] text-white" asChild>
+                  <a 
+                    href={`https://wa.me/${selectedLocation.whatsapp}?text=${encodeURIComponent("Ciao! Vorrei prenotare un appuntamento. Grazie!")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Prenota su WhatsApp
+                  </a>
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </footer>
   );
 }
