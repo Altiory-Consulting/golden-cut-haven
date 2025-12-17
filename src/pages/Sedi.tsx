@@ -8,7 +8,7 @@ const locations = [{
   province: "NA",
   phone: "+39 081 062 3508",
   whatsapp: "393891716135",
-  hours: "Lun-Ven: 9:00-20:00 | Sab: 9:00-19:00",
+  hours: "Mar-Sab: 9:00-18:30 | Dom-Lun: Chiuso",
   featured: true
 }, {
   city: "Afragola",
@@ -18,7 +18,7 @@ const locations = [{
   province: "NA",
   phone: "+39 081 860 7157",
   whatsapp: "393511531005",
-  hours: "Lun-Ven: 9:00-20:00 | Sab: 9:00-19:00",
+  hours: "Lun/Dom: 10:00-19:30 | Mar-Sab: 9:00-19:30",
   featured: false
 }];
 export default function Sedi() {
