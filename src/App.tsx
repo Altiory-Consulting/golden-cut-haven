@@ -11,6 +11,8 @@ import ChiSiamo from "./pages/ChiSiamo";
 import Sedi from "./pages/Sedi";
 import Listini from "./pages/Listini";
 import HairSpa from "./pages/HairSpa";
+import Privacy from "./pages/Privacy";
+import Cookie from "./pages/Cookie";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
               <Route path="/sedi" element={<Sedi />} />
               <Route path="/listini" element={<Listini />} />
               <Route path="/hair-spa" element={<HairSpa />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/cookie" element={<Cookie />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </PageTransition>

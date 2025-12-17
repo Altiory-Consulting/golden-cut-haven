@@ -5,11 +5,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 const socialLinks = [{
   icon: Instagram,
-  href: "#",
+  href: "https://instagram.com/hairdotop",
   label: "Instagram"
 }, {
   icon: Facebook,
-  href: "#",
+  href: "https://facebook.com/hairdotop",
   label: "Facebook"
 }];
 const quickLinks = [{
@@ -77,7 +77,7 @@ export function Footer() {
               lusso per la tua bellezza.
             </p>
             <div className="flex space-x-4 mt-8">
-              {socialLinks.map(social => <a key={social.label} href={social.href} className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label={social.label}>
+              {socialLinks.map(social => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label={social.label}>
                   <social.icon size={20} />
                 </a>)}
             </div>
@@ -121,12 +121,12 @@ export function Footer() {
               © 2024 Hair do top. Tutti i diritti riservati.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors">
+              <Link to="/privacy" className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors">
+              </Link>
+              <Link to="/cookie" className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>
