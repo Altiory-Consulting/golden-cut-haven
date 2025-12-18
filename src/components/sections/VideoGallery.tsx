@@ -126,12 +126,6 @@ export function VideoGallery({ className }: VideoGalleryProps) {
                     </motion.div>
                   </motion.div>
 
-                  {/* Video Number Badge */}
-                  <div className="absolute top-3 left-3 px-2 py-1 bg-primary/90 rounded-full">
-                    <span className="font-cormorant text-sm text-deep-black font-semibold">
-                      #{video.id}
-                    </span>
-                  </div>
 
                   {/* Title Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
