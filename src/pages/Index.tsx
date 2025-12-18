@@ -12,7 +12,6 @@ import nakLogo from "@/assets/partners/nak.png";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ParallaxVideo } from "@/components/animations/ParallaxImage";
 import { FAQ } from "@/components/sections/FAQ";
-import { InstagramFeed } from "@/components/sections/InstagramFeed";
 import { motion } from "framer-motion";
 
 const services = [
@@ -282,9 +281,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      {/* Instagram Feed */}
-      <InstagramFeed username="hairdotop" />
 
       {/* Reviews Section */}
       <section className="py-24 lg:py-32 relative bg-background">
