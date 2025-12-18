@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
-import { Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ interface VideoGalleryProps {
 }
 
 export function VideoGallery({ className }: VideoGalleryProps) {
-  const [activeVideo, setActiveVideo] = useState<number | null>(null);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -31,8 +31,12 @@ export function VideoGallery({ className }: VideoGalleryProps) {
     }
   };
 
-  const handleVideoClick = (id: number) => {
-    setActiveVideo(activeVideo === id ? null : id);
+  const openModal = (videoUrl: string) => {
+    setActiveVideo(videoUrl);
+  };
+
+  const closeModal = () => {
+    setActiveVideo(null);
   };
 
   return (
@@ -91,7 +95,7 @@ export function VideoGallery({ className }: VideoGalleryProps) {
                   whileHover={{ scale: 1.05, y: -10 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.3 }}
-                  onClick={() => handleVideoClick(video.id)}
+                  onClick={() => openModal(video.videoUrl)}
                 >
                   {/* Video */}
                   <video
@@ -126,8 +130,6 @@ export function VideoGallery({ className }: VideoGalleryProps) {
                     </motion.div>
                   </motion.div>
 
-
-
                   {/* Shine Effect on Hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -138,6 +140,46 @@ export function VideoGallery({ className }: VideoGalleryProps) {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {activeVideo && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-50 w-12 h-12 bg-primary/90 hover:bg-primary rounded-full flex items-center justify-center text-deep-black transition-all duration-300 hover:scale-110"
+              aria-label="Chiudi video"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Video Container */}
+            <motion.div
+              className="relative w-full max-w-md h-[80vh] max-h-[900px]"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                src={activeVideo}
+                className="w-full h-full object-contain rounded-2xl"
+                controls
+                autoPlay
+                playsInline
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hide scrollbar CSS */}
       <style>{`
