@@ -116,11 +116,46 @@ export default function Sedi() {
             </h2>
           </div>
           
-          <div className="aspect-[16/9] lg:aspect-[21/9] w-full overflow-hidden border border-primary/20">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96534.23456789!2d14.3!3d40.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b08ca5c38a6fd%3A0x4081f3c7bb69c72!2sAcerra%20NA!5e0!3m2!1sit!2sit!4v1709123456789!5m2!1sit!2sit" width="100%" height="100%" style={{
-            border: 0,
-            filter: "invert(90%) hue-rotate(180deg)"
-          }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Mappa sedi Hair do top" />
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Mappa Acerra */}
+            <div>
+              <h3 className="font-playfair text-xl text-primary mb-4 text-center">Sede Acerra</h3>
+              <div className="aspect-[4/3] w-full overflow-hidden border border-primary/20">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.8!2d14.3714!3d40.9452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b9c7e4e8b0001%3A0x1234567890abcdef!2sVia%20Francesco%20Castaldi%2C%2012%2C%2080011%20Acerra%20NA!5e0!3m2!1sit!2sit!4v1709123456789!5m2!1sit!2sit" 
+                  width="100%" 
+                  height="100%" 
+                  style={{
+                    border: 0,
+                    filter: "invert(90%) hue-rotate(180deg)"
+                  }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade" 
+                  title="Mappa Sede Acerra" 
+                />
+              </div>
+            </div>
+            
+            {/* Mappa Afragola */}
+            <div>
+              <h3 className="font-playfair text-xl text-primary mb-4 text-center">Sede Le Porte di Napoli</h3>
+              <div className="aspect-[4/3] w-full overflow-hidden border border-primary/20">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.5!2d14.3128!3d40.9223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b9d4e8b0001%3A0xabcdef1234567890!2sVia%20Santa%20Maria%20la%20Nova%2C%201%2C%2080021%20Afragola%20NA!5e0!3m2!1sit!2sit!4v1709123456790!5m2!1sit!2sit" 
+                  width="100%" 
+                  height="100%" 
+                  style={{
+                    border: 0,
+                    filter: "invert(90%) hue-rotate(180deg)"
+                  }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade" 
+                  title="Mappa Sede Afragola" 
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
