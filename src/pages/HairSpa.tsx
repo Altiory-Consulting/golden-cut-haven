@@ -210,12 +210,13 @@ export default function HairSpa() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5 }}
               >
-                <motion.img
-                  src={hairSpaImage}
-                  alt="Hair Spa treatment"
+                <video
+                  src="/videos/hair-spa-room.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.7 }}
                 />
               </motion.div>
               {/* Decorative element */}
