@@ -1,17 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Scissors, Palette, Sparkles, Star, Users, Award } from "lucide-react";
-import heroImage from "@/assets/hero-salon.jpg";
-import hairModel1 from "@/assets/hair-model-1.jpg";
-import hairModel2 from "@/assets/hair-model-2.jpg";
 import ghdLogo from "@/assets/partners/ghd.png";
 import kevinMurphyLogo from "@/assets/partners/kevin-murphy.png";
 import leonorGreylLogo from "@/assets/partners/leonor-greyl.png";
 import lorealLogo from "@/assets/partners/loreal.png";
 import nakLogo from "@/assets/partners/nak.png";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { ParallaxVideo } from "@/components/animations/ParallaxImage";
 import { FAQ } from "@/components/sections/FAQ";
+import { VideoGallery } from "@/components/sections/VideoGallery";
 import { motion } from "framer-motion";
 
 const services = [
@@ -206,46 +203,8 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-24 lg:py-32 bg-soft-black">
-        <div className="container mx-auto px-6">
-          <ScrollReveal className="text-center mb-16">
-            <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase mb-4">
-              Portfolio
-            </p>
-            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-foreground gold-underline inline-block pb-4">
-              Le Nostre Creazioni
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { src: hairModel1, title: "Styling Donna", subtitle: "Onde Glamour" },
-              { src: hairModel2, title: "Taglio Uomo", subtitle: "Stile Contemporaneo" },
-              { src: heroImage, title: "Il Nostro Salone", subtitle: "Ambiente Esclusivo" },
-            ].map((item, index) => (
-              <ScrollReveal key={item.title} delay={index * 0.1}>
-                <motion.div 
-                  className={`relative group overflow-hidden aspect-[3/4] ${index === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="font-playfair text-xl text-foreground">{item.title}</p>
-                    <p className="font-cormorant text-primary">{item.subtitle}</p>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Video Gallery Section */}
+      <VideoGallery />
 
       {/* Partners Section */}
       <section className="py-20 bg-soft-black border-t border-primary/10 overflow-hidden">
