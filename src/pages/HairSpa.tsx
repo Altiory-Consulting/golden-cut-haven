@@ -281,40 +281,133 @@ export default function HairSpa() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 sm:py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6">
-          <ScrollReveal className="text-center mb-10 sm:mb-16">
-            <p className="font-cormorant text-primary text-base sm:text-lg tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-4">
+      <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute bottom-20 right-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl"
+            animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 10, repeat: Infinity }}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <ScrollReveal className="text-center mb-12 sm:mb-20">
+            <motion.p 
+              className="font-cormorant text-primary text-base sm:text-lg tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-4"
+              initial={{ letterSpacing: "0.1em" }}
+              whileInView={{ letterSpacing: "0.3em" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+            >
               I Benefici
-            </p>
+            </motion.p>
             <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl text-foreground gold-underline inline-block pb-4">
               Cosa Fa per Te
             </h2>
           </ScrollReveal>
 
-          <div className="max-w-3xl mx-auto">
-            <div className="grid gap-3 sm:gap-5">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
               {benefits.map((benefit, index) => (
-                <ScrollReveal key={benefit} delay={index * 0.08}>
+                <ScrollReveal key={benefit} delay={index * 0.1}>
                   <motion.div
-                    className="luxury-card p-4 sm:p-6 flex items-center gap-4 sm:gap-5"
-                    whileHover={{ x: 10, borderColor: "hsl(40, 45%, 59%)" }}
-                    transition={{ duration: 0.3 }}
+                    className="group relative luxury-card p-5 sm:p-7 flex items-start gap-4 sm:gap-5 cursor-pointer overflow-hidden"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      borderColor: "hsl(40, 45%, 59%)",
+                      boxShadow: "0 20px 40px -20px hsl(40 45% 59% / 0.3)"
+                    }}
+                    transition={{ duration: 0.4 }}
                   >
+                    {/* Animated background gradient on hover */}
                     <motion.div 
-                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-primary/50 flex items-center justify-center flex-shrink-0 bg-primary/10"
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.5 }}
+                      className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    />
+                    
+                    {/* Number badge */}
+                    <motion.div 
+                      className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 flex items-center justify-center flex-shrink-0"
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                      <motion.span 
+                        className="font-playfair text-xl sm:text-2xl text-primary font-bold"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 200 }}
+                      >
+                        {index + 1}
+                      </motion.span>
+                      
+                      {/* Pulsing ring effect */}
+                      <motion.div 
+                        className="absolute inset-0 rounded-xl border border-primary/50"
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                      />
                     </motion.div>
-                    <span className="font-cormorant text-lg sm:text-xl text-foreground/90">
-                      {benefit}
-                    </span>
+                    
+                    <div className="relative flex-1">
+                      <motion.span 
+                        className="font-cormorant text-lg sm:text-xl text-foreground/90 leading-relaxed block"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.2 }}
+                      >
+                        {benefit}
+                      </motion.span>
+                      
+                      {/* Animated check mark on hover */}
+                      <motion.div 
+                        className="absolute -right-2 -bottom-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        initial={{ scale: 0, rotate: -45 }}
+                        whileHover={{ scale: 1, rotate: 0 }}
+                      >
+                        <Check className="w-5 h-5 text-primary" />
+                      </motion.div>
+                    </div>
+                    
+                    {/* Shine effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none overflow-hidden">
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                      />
+                    </div>
                   </motion.div>
                 </ScrollReveal>
               ))}
             </div>
+            
+            {/* Summary stat */}
+            <ScrollReveal delay={0.5}>
+              <motion.div 
+                className="mt-10 sm:mt-14 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <motion.div 
+                  className="inline-flex items-center gap-3 bg-primary/10 border border-primary/30 rounded-full px-6 py-3"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Sparkles className="w-5 h-5 text-primary" />
+                  <span className="font-cormorant text-foreground/80">
+                    <span className="text-primary font-semibold">{benefits.length}</span> benefici in un unico trattamento
+                  </span>
+                </motion.div>
+              </motion.div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
