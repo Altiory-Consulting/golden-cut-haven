@@ -141,13 +141,6 @@ export function VideoGallery({ className }: VideoGalleryProps) {
             ))}
           </div>
         </div>
-
-        {/* Video Counter */}
-        <ScrollReveal delay={0.3} className="text-center mt-8">
-          <p className="font-cormorant text-foreground/50 text-lg">
-            <span className="text-primary font-semibold">{videos.length}</span> video nel nostro portfolio
-          </p>
-        </ScrollReveal>
       </div>
 
       {/* Hide scrollbar CSS */}
