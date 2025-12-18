@@ -127,13 +127,6 @@ export function VideoGallery({ className }: VideoGalleryProps) {
                   </motion.div>
 
 
-                  {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="font-playfair text-lg text-foreground">{video.title}</p>
-                    <p className="font-cormorant text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Guarda il video
-                    </p>
-                  </div>
 
                   {/* Shine Effect on Hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
