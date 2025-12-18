@@ -4,12 +4,13 @@ import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { cn } from "@/lib/utils";
 
-// Placeholder videos - replace with real video URLs
-const videos = Array.from({ length: 50 }, (_, i) => ({
-  id: i + 1,
-  title: `Styling ${i + 1}`,
-  thumbnail: `https://picsum.photos/seed/${i + 100}/360/640`,
-  videoUrl: "", // Add real video URLs here
+// Video portfolio - uploaded videos
+const uploadedVideos = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11];
+
+const videos = uploadedVideos.map((num) => ({
+  id: num,
+  title: `Styling ${num}`,
+  videoUrl: `/videos/portfolio/${num}.mp4`,
 }));
 
 interface VideoGalleryProps {
@@ -92,11 +93,19 @@ export function VideoGallery({ className }: VideoGalleryProps) {
                   transition={{ duration: 0.3 }}
                   onClick={() => handleVideoClick(video.id)}
                 >
-                  {/* Thumbnail/Video */}
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
+                  {/* Video */}
+                  <video
+                    src={video.videoUrl}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause();
+                      e.currentTarget.currentTime = 0;
+                    }}
                   />
                   
                   {/* Gradient Overlay */}
