@@ -42,7 +42,7 @@ export default function HairSpa() {
             playsInline
             className="w-full h-[120%] object-cover"
           >
-            <source src="/videos/hair-spa.mp4" type="video/mp4" />
+            <source src="/videos/hair-spa-hero.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-deep-black/60" />
         </motion.div>
