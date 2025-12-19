@@ -355,8 +355,8 @@ export default function Index() {
         </ScrollReveal>
         
         <div className="relative w-full overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(4)].map((_, setIndex) => (
+          <div className="flex animate-marquee">
+            {[...Array(6)].map((_, setIndex) => (
               <div key={setIndex} className="flex items-center shrink-0">
                 {[
                   { src: lorealLogo, alt: "L'Oréal" },
@@ -369,9 +369,9 @@ export default function Index() {
                     key={`${setIndex}-${index}`}
                     src={partner.src}
                     alt={partner.alt}
-                    className="h-10 md:h-14 w-auto object-contain mx-12 md:mx-16"
+                    className="h-16 md:h-20 lg:h-24 w-auto object-contain mx-10 md:mx-14"
                     whileHover={{ scale: 1.1, opacity: 1 }}
-                    initial={{ opacity: 0.7 }}
+                    initial={{ opacity: 0.8 }}
                     transition={{ duration: 0.3 }}
                   />
                 ))}

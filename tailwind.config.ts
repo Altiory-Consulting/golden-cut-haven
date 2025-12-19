@@ -125,7 +125,7 @@ export default {
         shimmer: "shimmer 3s ease-in-out infinite",
         float: "float 6s ease-in-out infinite",
         "gold-pulse": "gold-pulse 2s ease-in-out infinite",
-        marquee: "marquee 20s linear infinite",
+        marquee: "marquee 12s linear infinite",
       },
     },
   },
