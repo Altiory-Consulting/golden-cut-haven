@@ -2,16 +2,18 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Heart, Gem, MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-salon.jpg";
-import maleDirector from "@/assets/team/male-director.jpg";
-import maleStylist from "@/assets/team/male-stylist.jpg";
-import femaleStylist1 from "@/assets/team/female-stylist-1.jpg";
-import femaleStylist2 from "@/assets/team/female-stylist-2.jpg";
 import raffaeleImg from "@/assets/team/raffaele.png";
 import annaImg from "@/assets/team/anna.png";
 import nandoImg from "@/assets/team/nando.png";
 import matteoImg from "@/assets/team/matteo.png";
 import giulianaImg from "@/assets/team/giuliana.png";
 import carmelaImg from "@/assets/team/carmela.png";
+import giusyImg from "@/assets/team/giusy.png";
+import serenaImg from "@/assets/team/serena.png";
+import robertoImg from "@/assets/team/roberto.png";
+import sofiaImg from "@/assets/team/sofia.png";
+import elenaImg from "@/assets/team/elena.png";
+import emanueleImg from "@/assets/team/emanuele.png";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -41,11 +43,11 @@ const teamAcerra = [{
 }, {
   name: "Giusy",
   role: "Stylist",
-  image: femaleStylist1
+  image: giusyImg
 }, {
   name: "Serena",
   role: "Stylist",
-  image: femaleStylist2
+  image: serenaImg
 }];
 
 const teamIpercoop = [{
@@ -63,7 +65,7 @@ const teamIpercoop = [{
 }, {
   name: "Roberto",
   role: "Stylist",
-  image: maleStylist
+  image: robertoImg
 }, {
   name: "Carmela",
   role: "Stylist",
@@ -71,15 +73,15 @@ const teamIpercoop = [{
 }, {
   name: "Sofia",
   role: "Salon Assistant",
-  image: femaleStylist2
+  image: sofiaImg
 }, {
   name: "Elena",
   role: "Salon Assistant",
-  image: femaleStylist2
+  image: elenaImg
 }, {
   name: "Emanuele",
   role: "Receptionist",
-  image: maleStylist
+  image: emanueleImg
 }];
 
 export default function ChiSiamo() {
