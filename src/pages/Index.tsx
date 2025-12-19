@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Scissors, Palette, Sparkles, Star, MapPin } from "lucide-react";
+import { Scissors, Palette, Sparkles, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import ghdLogo from "@/assets/partners/ghd.png";
 import kevinMurphyLogo from "@/assets/partners/kevin-murphy.png";
 import leonorGreylLogo from "@/assets/partners/leonor-greyl.png";
@@ -81,6 +82,41 @@ const stats = [
 ];
 
 export default function Index() {
+  const teamScrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollButtons = () => {
+    if (teamScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = teamScrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    checkScrollButtons();
+    const scrollContainer = teamScrollRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', checkScrollButtons);
+      window.addEventListener('resize', checkScrollButtons);
+      return () => {
+        scrollContainer.removeEventListener('scroll', checkScrollButtons);
+        window.removeEventListener('resize', checkScrollButtons);
+      };
+    }
+  }, []);
+
+  const scrollTeam = (direction: 'left' | 'right') => {
+    if (teamScrollRef.current) {
+      const scrollAmount = 280;
+      teamScrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="bg-background">
       {/* Hero Section with Parallax */}
@@ -240,37 +276,62 @@ export default function Index() {
             </h2>
           </ScrollReveal>
 
-          <div className="overflow-x-auto pb-6 -mx-6 px-6 scrollbar-hide">
-            <div className="flex gap-6" style={{ width: 'max-content' }}>
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={member.name + index}
-                  className="group relative overflow-hidden rounded-lg w-64 flex-shrink-0"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05, duration: 0.4 }}
-                  whileHover={{ y: -8 }}
-                >
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                  </div>
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h3 className="font-playfair text-lg text-foreground mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="font-cormorant text-primary text-base">
-                      {member.role}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+          <div className="relative">
+            {/* Left Arrow */}
+            <motion.button
+              onClick={() => scrollTeam('left')}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-deep-black/80 border border-primary/30 flex items-center justify-center transition-all duration-300 hover:bg-primary/20 hover:border-primary ${!canScrollLeft ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ChevronLeft className="w-6 h-6 text-primary" />
+            </motion.button>
+
+            {/* Right Arrow */}
+            <motion.button
+              onClick={() => scrollTeam('right')}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-deep-black/80 border border-primary/30 flex items-center justify-center transition-all duration-300 hover:bg-primary/20 hover:border-primary ${!canScrollRight ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ChevronRight className="w-6 h-6 text-primary" />
+            </motion.button>
+
+            <div 
+              ref={teamScrollRef}
+              className="overflow-x-auto pb-6 px-8 scrollbar-hide"
+            >
+              <div className="flex gap-6" style={{ width: 'max-content' }}>
+                {teamMembers.map((member, index) => (
+                  <motion.div
+                    key={member.name + index}
+                    className="group relative overflow-hidden rounded-lg w-64 flex-shrink-0"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05, duration: 0.4 }}
+                    whileHover={{ y: -8 }}
+                  >
+                    <div className="aspect-[3/4] overflow-hidden">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                    </div>
+                    
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h3 className="font-playfair text-lg text-foreground mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="font-cormorant text-primary text-base">
+                        {member.role}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
 
