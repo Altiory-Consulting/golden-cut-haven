@@ -7,16 +7,18 @@ import kevinMurphyLogo from "@/assets/partners/kevin-murphy.png";
 import leonorGreylLogo from "@/assets/partners/leonor-greyl.png";
 import lorealLogo from "@/assets/partners/loreal.png";
 import nakLogo from "@/assets/partners/nak.png";
-import maleDirector from "@/assets/team/male-director.jpg";
-import maleStylist from "@/assets/team/male-stylist.jpg";
-import femaleStylist1 from "@/assets/team/female-stylist-1.jpg";
-import femaleStylist2 from "@/assets/team/female-stylist-2.jpg";
 import raffaeleImg from "@/assets/team/raffaele.png";
 import annaImg from "@/assets/team/anna.png";
 import nandoImg from "@/assets/team/nando.png";
 import matteoImg from "@/assets/team/matteo.png";
 import giulianaImg from "@/assets/team/giuliana.png";
 import carmelaImg from "@/assets/team/carmela.png";
+import giusyImg from "@/assets/team/giusy.png";
+import serenaImg from "@/assets/team/serena.png";
+import robertoImg from "@/assets/team/roberto.png";
+import sofiaImg from "@/assets/team/sofia.png";
+import elenaImg from "@/assets/team/elena.png";
+import emanueleImg from "@/assets/team/emanuele.png";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { FAQ } from "@/components/sections/FAQ";
 import { VideoGallery } from "@/components/sections/VideoGallery";
@@ -28,16 +30,16 @@ const teamMembers = [
   { name: "Nando", role: "Art Hair Director", image: nandoImg, sede: "Ipercoop" },
   // Sede Acerra
   { name: "Anna", role: "Stylist", image: annaImg, sede: "Acerra" },
-  { name: "Giusy", role: "Stylist", image: femaleStylist1, sede: "Acerra" },
-  { name: "Serena", role: "Stylist", image: femaleStylist2, sede: "Acerra" },
+  { name: "Giusy", role: "Stylist", image: giusyImg, sede: "Acerra" },
+  { name: "Serena", role: "Stylist", image: serenaImg, sede: "Acerra" },
   // Sede Ipercoop
   { name: "Matteo", role: "Stylist", image: matteoImg, sede: "Ipercoop" },
   { name: "Giuliana", role: "Stylist", image: giulianaImg, sede: "Ipercoop" },
-  { name: "Roberto", role: "Stylist", image: maleStylist, sede: "Ipercoop" },
+  { name: "Roberto", role: "Stylist", image: robertoImg, sede: "Ipercoop" },
   { name: "Carmela", role: "Stylist", image: carmelaImg, sede: "Ipercoop" },
-  { name: "Sofia", role: "Salon Assistant", image: femaleStylist2, sede: "Ipercoop" },
-  { name: "Elena", role: "Salon Assistant", image: femaleStylist2, sede: "Ipercoop" },
-  { name: "Emanuele", role: "Receptionist", image: maleStylist, sede: "Ipercoop" },
+  { name: "Sofia", role: "Salon Assistant", image: sofiaImg, sede: "Ipercoop" },
+  { name: "Elena", role: "Salon Assistant", image: elenaImg, sede: "Ipercoop" },
+  { name: "Emanuele", role: "Receptionist", image: emanueleImg, sede: "Ipercoop" },
 ];
 
 const services = [
