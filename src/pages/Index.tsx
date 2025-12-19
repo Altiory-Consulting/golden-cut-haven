@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Scissors, Palette, Sparkles, Star, Instagram } from "lucide-react";
+import { Scissors, Palette, Sparkles, Star, MapPin } from "lucide-react";
 import ghdLogo from "@/assets/partners/ghd.png";
 import kevinMurphyLogo from "@/assets/partners/kevin-murphy.png";
 import leonorGreylLogo from "@/assets/partners/leonor-greyl.png";
@@ -16,18 +16,20 @@ import { VideoGallery } from "@/components/sections/VideoGallery";
 import { motion } from "framer-motion";
 
 const teamMembers = [
-  { name: "Marco Esposito", role: "Direttore Creativo", image: maleDirector, instagram: "@marco.hairdo" },
-  { name: "Valentina Romano", role: "Senior Stylist", image: femaleStylist1, instagram: "@vale.hairdo" },
-  { name: "Luca Ferrara", role: "Color Specialist", image: maleStylist, instagram: "@luca.hairdo" },
-  { name: "Sofia Marini", role: "Hair Spa Expert", image: femaleStylist2, instagram: "@sofia.hairdo" },
-  { name: "Andrea Conte", role: "Creative Director", image: maleDirector, instagram: "@andrea.hairdo" },
-  { name: "Giulia Bianchi", role: "Senior Colorist", image: femaleStylist1, instagram: "@giulia.hairdo" },
-  { name: "Francesco Russo", role: "Hair Artist", image: maleStylist, instagram: "@francesco.hairdo" },
-  { name: "Elena Ricci", role: "Styling Expert", image: femaleStylist2, instagram: "@elena.hairdo" },
-  { name: "Alessandro Marino", role: "Barber Specialist", image: maleDirector, instagram: "@ale.hairdo" },
-  { name: "Chiara Lombardi", role: "Bridal Stylist", image: femaleStylist1, instagram: "@chiara.hairdo" },
-  { name: "Matteo Santini", role: "Texture Expert", image: maleStylist, instagram: "@matteo.hairdo" },
-  { name: "Martina Gallo", role: "Wellness Expert", image: femaleStylist2, instagram: "@martina.hairdo" },
+  // Sede Acerra
+  { name: "Raffaele", role: "Art Hair Director", image: maleDirector, sede: "Acerra" },
+  { name: "Anna", role: "Stylist", image: femaleStylist1, sede: "Acerra" },
+  { name: "Giusy", role: "Stylist", image: femaleStylist1, sede: "Acerra" },
+  { name: "Serena", role: "Stylist", image: femaleStylist2, sede: "Acerra" },
+  // Sede Ipercoop
+  { name: "Nando", role: "Art Hair Director", image: maleDirector, sede: "Ipercoop" },
+  { name: "Matteo", role: "Stylist", image: maleStylist, sede: "Ipercoop" },
+  { name: "Giuliana", role: "Stylist", image: femaleStylist1, sede: "Ipercoop" },
+  { name: "Roberto", role: "Stylist", image: maleStylist, sede: "Ipercoop" },
+  { name: "Carmela", role: "Stylist", image: femaleStylist1, sede: "Ipercoop" },
+  { name: "Sofia", role: "Salon Assistant", image: femaleStylist2, sede: "Ipercoop" },
+  { name: "Elena", role: "Salon Assistant", image: femaleStylist2, sede: "Ipercoop" },
+  { name: "Emanuele", role: "Receptionist", image: maleStylist, sede: "Ipercoop" },
 ];
 
 const services = [
@@ -267,8 +269,8 @@ export default function Index() {
                       {member.role}
                     </p>
                     <div className="flex items-center gap-2 text-foreground/60 group-hover:text-primary transition-colors duration-300">
-                      <Instagram className="w-4 h-4" />
-                      <span className="font-cormorant text-sm">{member.instagram}</span>
+                      <MapPin className="w-4 h-4" />
+                      <span className="font-cormorant text-sm">Sede {member.sede}</span>
                     </div>
                   </div>
                 </motion.div>
