@@ -265,13 +265,9 @@ export default function Index() {
                     <h3 className="font-playfair text-lg text-foreground mb-1">
                       {member.name}
                     </h3>
-                    <p className="font-cormorant text-primary text-base mb-2">
+                    <p className="font-cormorant text-primary text-base">
                       {member.role}
                     </p>
-                    <div className="flex items-center gap-2 text-foreground/60 group-hover:text-primary transition-colors duration-300">
-                      <MapPin className="w-4 h-4" />
-                      <span className="font-cormorant text-sm">Sede {member.sede}</span>
-                    </div>
                   </div>
                 </motion.div>
               ))}
