@@ -16,30 +16,18 @@ import { VideoGallery } from "@/components/sections/VideoGallery";
 import { motion } from "framer-motion";
 
 const teamMembers = [
-  {
-    name: "Marco Esposito",
-    role: "Direttore Creativo",
-    image: maleDirector,
-    instagram: "@marco.hairdo",
-  },
-  {
-    name: "Valentina Romano",
-    role: "Senior Stylist",
-    image: femaleStylist1,
-    instagram: "@vale.hairdo",
-  },
-  {
-    name: "Luca Ferrara",
-    role: "Color Specialist",
-    image: maleStylist,
-    instagram: "@luca.hairdo",
-  },
-  {
-    name: "Sofia Marini",
-    role: "Hair Spa Expert",
-    image: femaleStylist2,
-    instagram: "@sofia.hairdo",
-  },
+  { name: "Marco Esposito", role: "Direttore Creativo", image: maleDirector, instagram: "@marco.hairdo" },
+  { name: "Valentina Romano", role: "Senior Stylist", image: femaleStylist1, instagram: "@vale.hairdo" },
+  { name: "Luca Ferrara", role: "Color Specialist", image: maleStylist, instagram: "@luca.hairdo" },
+  { name: "Sofia Marini", role: "Hair Spa Expert", image: femaleStylist2, instagram: "@sofia.hairdo" },
+  { name: "Andrea Conte", role: "Creative Director", image: maleDirector, instagram: "@andrea.hairdo" },
+  { name: "Giulia Bianchi", role: "Senior Colorist", image: femaleStylist1, instagram: "@giulia.hairdo" },
+  { name: "Francesco Russo", role: "Hair Artist", image: maleStylist, instagram: "@francesco.hairdo" },
+  { name: "Elena Ricci", role: "Styling Expert", image: femaleStylist2, instagram: "@elena.hairdo" },
+  { name: "Alessandro Marino", role: "Barber Specialist", image: maleDirector, instagram: "@ale.hairdo" },
+  { name: "Chiara Lombardi", role: "Bridal Stylist", image: femaleStylist1, instagram: "@chiara.hairdo" },
+  { name: "Matteo Santini", role: "Texture Expert", image: maleStylist, instagram: "@matteo.hairdo" },
+  { name: "Martina Gallo", role: "Wellness Expert", image: femaleStylist2, instagram: "@martina.hairdo" },
 ];
 
 const services = [
@@ -250,13 +238,17 @@ export default function Index() {
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <ScrollReveal key={member.name} delay={index * 0.1}>
+          <div className="overflow-x-auto pb-6 -mx-6 px-6 scrollbar-hide">
+            <div className="flex gap-6" style={{ width: 'max-content' }}>
+              {teamMembers.map((member, index) => (
                 <motion.div
-                  className="group relative overflow-hidden rounded-lg"
+                  key={member.name + index}
+                  className="group relative overflow-hidden rounded-lg w-64 flex-shrink-0"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
                   whileHover={{ y: -8 }}
-                  transition={{ duration: 0.3 }}
                 >
                   <div className="aspect-[3/4] overflow-hidden">
                     <img
@@ -267,11 +259,11 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                   </div>
                   
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="font-playfair text-xl text-foreground mb-1">
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h3 className="font-playfair text-lg text-foreground mb-1">
                       {member.name}
                     </h3>
-                    <p className="font-cormorant text-primary text-lg mb-3">
+                    <p className="font-cormorant text-primary text-base mb-2">
                       {member.role}
                     </p>
                     <div className="flex items-center gap-2 text-foreground/60 group-hover:text-primary transition-colors duration-300">
@@ -280,8 +272,8 @@ export default function Index() {
                     </div>
                   </div>
                 </motion.div>
-              </ScrollReveal>
-            ))}
+              ))}
+            </div>
           </div>
 
           <ScrollReveal delay={0.4} className="text-center mt-12">
