@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Scissors, Palette, Sparkles, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Scissors, Palette, Sparkles, Star, ChevronLeft, ChevronRight, MapPin, Phone, Clock } from "lucide-react";
 import ghdLogo from "@/assets/partners/ghd.png";
 import kevinMurphyLogo from "@/assets/partners/kevin-murphy.png";
 import leonorGreylLogo from "@/assets/partners/leonor-greyl.png";
@@ -432,7 +432,7 @@ export default function Index() {
       {/* FAQ Section */}
       <FAQ className="bg-soft-black" />
 
-      {/* CTA Section */}
+      {/* Sedi Section */}
       <section className="py-24 lg:py-32 bg-champagne relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <motion.div 
@@ -461,23 +461,105 @@ export default function Index() {
           />
         </div>
         
-        <div className="container mx-auto px-6 text-center relative z-10">
+        <div className="container mx-auto px-6 relative z-10">
           <ScrollReveal>
-            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-deep-black mb-6">
-              Vivi l'Esperienza
-            </h2>
-            <p className="font-cormorant text-xl md:text-2xl text-dark-gold max-w-2xl mx-auto mb-12">
-              Prenota il tuo appuntamento e scopri il lusso di un salone d'eccellenza
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button variant="champagne" size="xl" asChild className="bg-deep-black text-champagne hover:bg-deep-black/90">
-                <Link to="/sedi">Trova la Sede più Vicina</Link>
-              </Button>
-              <Button variant="outline" size="xl" asChild className="border-deep-black text-deep-black hover:bg-deep-black hover:text-champagne">
-                <Link to="/chi-siamo">Scopri Chi Siamo</Link>
-              </Button>
+            <div className="text-center mb-16">
+              <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-deep-black mb-6">
+                Le Nostre Sedi
+              </h2>
+              <p className="font-cormorant text-xl md:text-2xl text-dark-gold max-w-2xl mx-auto">
+                Due location esclusive in provincia di Napoli
+              </p>
             </div>
           </ScrollReveal>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Sede Acerra */}
+            <ScrollReveal delay={0.1} direction="left">
+              <motion.div 
+                className="bg-deep-black/95 backdrop-blur-sm rounded-2xl p-8 lg:p-10 ring-1 ring-primary/30 h-full"
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="font-playfair text-3xl text-champagne mb-2">Sede Acerra</h3>
+                <p className="font-cormorant text-primary text-lg mb-6">Acerra</p>
+                
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="text-champagne/90 font-cormorant">Via Francesco Castaldi, 12</p>
+                      <p className="text-champagne/60 font-cormorant text-sm">80011 Acerra (NA)</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                    <a href="tel:+390810623508" className="text-champagne/90 font-cormorant hover:text-primary transition-colors">
+                      +39 081 062 3508
+                    </a>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <p className="text-champagne/90 font-cormorant">Mar-Sab: 9:00-18:30<br />Dom-Lun: Chiuso</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3">
+                  <Button variant="outline" size="sm" asChild className="flex-1 border-primary text-primary hover:bg-primary hover:text-deep-black">
+                    <a href="https://wa.me/393891716135" target="_blank" rel="noopener noreferrer">
+                      WhatsApp
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="flex-1 border-champagne/50 text-champagne hover:bg-champagne hover:text-deep-black">
+                    <Link to="/sedi">Info</Link>
+                  </Button>
+                </div>
+              </motion.div>
+            </ScrollReveal>
+
+            {/* Sede Ipercoop */}
+            <ScrollReveal delay={0.2} direction="right">
+              <motion.div 
+                className="bg-deep-black/95 backdrop-blur-sm rounded-2xl p-8 lg:p-10 ring-1 ring-primary/30 h-full"
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="font-playfair text-3xl text-champagne mb-2">Sede Le Porte di Napoli</h3>
+                <p className="font-cormorant text-primary text-lg mb-6">Afragola</p>
+                
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="text-champagne/90 font-cormorant">Via Santa Maria la Nova, 1</p>
+                      <p className="text-champagne/60 font-cormorant text-sm">80021 Afragola (NA)</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                    <a href="tel:+390818607157" className="text-champagne/90 font-cormorant hover:text-primary transition-colors">
+                      +39 081 860 7157
+                    </a>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <p className="text-champagne/90 font-cormorant">Lun/Dom: 10:00-19:30<br />Mar-Sab: 9:00-19:30</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3">
+                  <Button variant="outline" size="sm" asChild className="flex-1 border-primary text-primary hover:bg-primary hover:text-deep-black">
+                    <a href="https://wa.me/393511531005" target="_blank" rel="noopener noreferrer">
+                      WhatsApp
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="flex-1 border-champagne/50 text-champagne hover:bg-champagne hover:text-deep-black">
+                    <Link to="/sedi">Info</Link>
+                  </Button>
+                </div>
+              </motion.div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
     </div>
