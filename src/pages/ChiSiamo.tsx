@@ -6,6 +6,12 @@ import maleDirector from "@/assets/team/male-director.jpg";
 import maleStylist from "@/assets/team/male-stylist.jpg";
 import femaleStylist1 from "@/assets/team/female-stylist-1.jpg";
 import femaleStylist2 from "@/assets/team/female-stylist-2.jpg";
+import raffaeleImg from "@/assets/team/raffaele.png";
+import annaImg from "@/assets/team/anna.png";
+import nandoImg from "@/assets/team/nando.png";
+import matteoImg from "@/assets/team/matteo.png";
+import giulianaImg from "@/assets/team/giuliana.png";
+import carmelaImg from "@/assets/team/carmela.png";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -27,11 +33,11 @@ const values = [{
 const teamAcerra = [{
   name: "Raffaele",
   role: "Art Hair Director",
-  image: maleDirector
+  image: raffaeleImg
 }, {
   name: "Anna",
   role: "Stylist",
-  image: femaleStylist1
+  image: annaImg
 }, {
   name: "Giusy",
   role: "Stylist",
@@ -45,15 +51,15 @@ const teamAcerra = [{
 const teamIpercoop = [{
   name: "Nando",
   role: "Art Hair Director",
-  image: maleDirector
+  image: nandoImg
 }, {
   name: "Matteo",
   role: "Stylist",
-  image: maleStylist
+  image: matteoImg
 }, {
   name: "Giuliana",
   role: "Stylist",
-  image: femaleStylist1
+  image: giulianaImg
 }, {
   name: "Roberto",
   role: "Stylist",
@@ -61,7 +67,7 @@ const teamIpercoop = [{
 }, {
   name: "Carmela",
   role: "Stylist",
-  image: femaleStylist1
+  image: carmelaImg
 }, {
   name: "Sofia",
   role: "Salon Assistant",
