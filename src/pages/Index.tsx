@@ -23,13 +23,14 @@ import { VideoGallery } from "@/components/sections/VideoGallery";
 import { motion } from "framer-motion";
 
 const teamMembers = [
-  // Sede Acerra
+  // Art Hair Directors
   { name: "Raffaele", role: "Art Hair Director", image: raffaeleImg, sede: "Acerra" },
+  { name: "Nando", role: "Art Hair Director", image: nandoImg, sede: "Ipercoop" },
+  // Sede Acerra
   { name: "Anna", role: "Stylist", image: annaImg, sede: "Acerra" },
   { name: "Giusy", role: "Stylist", image: femaleStylist1, sede: "Acerra" },
   { name: "Serena", role: "Stylist", image: femaleStylist2, sede: "Acerra" },
   // Sede Ipercoop
-  { name: "Nando", role: "Art Hair Director", image: nandoImg, sede: "Ipercoop" },
   { name: "Matteo", role: "Stylist", image: matteoImg, sede: "Ipercoop" },
   { name: "Giuliana", role: "Stylist", image: giulianaImg, sede: "Ipercoop" },
   { name: "Roberto", role: "Stylist", image: maleStylist, sede: "Ipercoop" },
