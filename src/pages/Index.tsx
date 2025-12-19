@@ -429,9 +429,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <FAQ className="bg-soft-black" />
-
       {/* Sedi Section */}
       <section className="py-24 lg:py-32 bg-champagne relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -562,6 +559,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ className="bg-soft-black" />
     </div>
   );
 }
