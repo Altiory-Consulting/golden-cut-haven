@@ -1,15 +1,46 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Scissors, Palette, Sparkles, Star, Users, Award } from "lucide-react";
+import { Scissors, Palette, Sparkles, Star, Instagram } from "lucide-react";
 import ghdLogo from "@/assets/partners/ghd.png";
 import kevinMurphyLogo from "@/assets/partners/kevin-murphy.png";
 import leonorGreylLogo from "@/assets/partners/leonor-greyl.png";
 import lorealLogo from "@/assets/partners/loreal.png";
 import nakLogo from "@/assets/partners/nak.png";
+import maleDirector from "@/assets/team/male-director.jpg";
+import maleStylist from "@/assets/team/male-stylist.jpg";
+import femaleStylist1 from "@/assets/team/female-stylist-1.jpg";
+import femaleStylist2 from "@/assets/team/female-stylist-2.jpg";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { FAQ } from "@/components/sections/FAQ";
 import { VideoGallery } from "@/components/sections/VideoGallery";
 import { motion } from "framer-motion";
+
+const teamMembers = [
+  {
+    name: "Marco Esposito",
+    role: "Direttore Creativo",
+    image: maleDirector,
+    instagram: "@marco.hairdo",
+  },
+  {
+    name: "Valentina Romano",
+    role: "Senior Stylist",
+    image: femaleStylist1,
+    instagram: "@vale.hairdo",
+  },
+  {
+    name: "Luca Ferrara",
+    role: "Color Specialist",
+    image: maleStylist,
+    instagram: "@luca.hairdo",
+  },
+  {
+    name: "Sofia Marini",
+    role: "Hair Spa Expert",
+    image: femaleStylist2,
+    instagram: "@sofia.hairdo",
+  },
+];
 
 const services = [
   {
@@ -198,6 +229,64 @@ export default function Index() {
           <ScrollReveal delay={0.4} className="text-center mt-12">
             <Button variant="outline" size="lg" asChild>
               <Link to="/listini">Vedi Tutti i Servizi</Link>
+            </Button>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24 lg:py-32 bg-soft-black relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-1/3 h-full opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary to-transparent" />
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <ScrollReveal className="text-center mb-16 lg:mb-20">
+            <p className="font-cormorant text-primary text-lg tracking-[0.3em] uppercase mb-4">
+              Il Nostro Team
+            </p>
+            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-foreground gold-underline inline-block pb-4">
+              Artisti della Bellezza
+            </h2>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member, index) => (
+              <ScrollReveal key={member.name} delay={index * 0.1}>
+                <motion.div
+                  className="group relative overflow-hidden rounded-lg"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="aspect-[3/4] overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="font-playfair text-xl text-foreground mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="font-cormorant text-primary text-lg mb-3">
+                      {member.role}
+                    </p>
+                    <div className="flex items-center gap-2 text-foreground/60 group-hover:text-primary transition-colors duration-300">
+                      <Instagram className="w-4 h-4" />
+                      <span className="font-cormorant text-sm">{member.instagram}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.4} className="text-center mt-12">
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/chi-siamo">Scopri il Team Completo</Link>
             </Button>
           </ScrollReveal>
         </div>
