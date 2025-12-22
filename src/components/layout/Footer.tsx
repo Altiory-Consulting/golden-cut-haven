@@ -66,7 +66,7 @@ export function Footer() {
   const [selectedLocation, setSelectedLocation] = useState<typeof locations[0] | null>(null);
   return <footer className="bg-soft-black border-t border-primary/20">
       <div className="container mx-auto px-6 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="font-playfair text-3xl tracking-wider text-primary">
