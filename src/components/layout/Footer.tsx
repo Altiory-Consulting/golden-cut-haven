@@ -146,7 +146,7 @@ export function Footer() {
           </motion.div>
 
           {/* Quick Links */}
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="md:text-center md:flex md:flex-col md:items-center">
             <h4 className="font-playfair text-xl text-primary mb-6 flex items-center gap-2">
               <span className="w-8 h-px bg-gradient-to-r from-primary to-transparent" />
               Esplora
