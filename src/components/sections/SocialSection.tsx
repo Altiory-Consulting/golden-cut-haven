@@ -138,13 +138,13 @@ export function SocialSection() {
                   href={activeTab === "instagram" ? sede.instagram : sede.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group"
+                  className="block group h-full"
                   onHoverStart={() => setHoveredSede(index)}
                   onHoverEnd={() => setHoveredSede(null)}
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative luxury-card p-8 overflow-hidden">
+                  <div className="relative luxury-card p-8 overflow-hidden h-full">
                     {/* Gradient background on hover */}
                     <motion.div
                       className={`absolute inset-0 bg-gradient-to-br ${
