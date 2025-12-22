@@ -144,13 +144,13 @@ export function Header() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden absolute left-0 right-0 top-full bg-deep-black/98 backdrop-blur-lg transition-all duration-500",
+          "lg:hidden fixed inset-0 top-20 bg-deep-black transition-all duration-500 z-40",
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         )}
       >
-        <nav className="flex flex-col items-center justify-center h-full space-y-8">
+        <nav className="flex flex-col items-center justify-center h-full space-y-8 py-12">
           {navigation.map((item, index) => (
             <Link
               key={item.name}
