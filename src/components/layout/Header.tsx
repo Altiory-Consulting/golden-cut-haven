@@ -144,11 +144,12 @@ export function Header() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden fixed inset-0 top-20 bg-deep-black z-40 transition-all duration-500 ease-out",
+          "lg:hidden fixed left-0 right-0 bottom-0 bg-deep-black z-50 transition-all duration-500 ease-out",
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none -translate-y-4"
         )}
+        style={{ top: '80px' }}
       >
         <nav className="flex flex-col items-center justify-center h-full space-y-8 py-12">
           {navigation.map((item, index) => (
