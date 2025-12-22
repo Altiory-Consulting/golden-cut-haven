@@ -144,7 +144,7 @@ export function Header() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden fixed inset-0 top-20 bg-deep-black/98 backdrop-blur-lg transition-all duration-500",
+          "lg:hidden absolute left-0 right-0 top-full bg-deep-black/98 backdrop-blur-lg transition-all duration-500",
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
