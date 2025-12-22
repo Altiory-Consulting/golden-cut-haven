@@ -1,135 +1,257 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Phone, Mail, MapPin, Clock, MessageCircle, X } from "lucide-react";
+import { Instagram, Facebook, Phone, MapPin, Clock, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-const socialLinks = [{
-  icon: Instagram,
-  href: "https://instagram.com/hairdotop",
-  label: "Instagram"
-}, {
-  icon: Facebook,
-  href: "https://facebook.com/hairdotop",
-  label: "Facebook"
-}];
-const quickLinks = [{
-  name: "Chi Siamo",
-  href: "/chi-siamo"
-}, {
-  name: "Sedi",
-  href: "/sedi"
-}, {
-  name: "Listini",
-  href: "/listini"
-}, {
-  name: "Hair Spa",
-  href: "/hair-spa"
-}];
-const locations = [{
-  name: "Sede Acerra",
-  city: "Acerra",
-  address: "Via Francesco Castaldi, 12",
-  cap: "80011",
-  province: "NA",
-  phone: "+39 081 062 3508",
-  whatsapp: "393891716135",
-  hours: [{
-    day: "Lunedì",
-    time: "Chiuso"
-  }, {
-    day: "Mar - Sab",
-    time: "9:00 - 18:30"
-  }, {
-    day: "Domenica",
-    time: "Chiuso"
-  }]
-}, {
-  name: "Sede Le Porte di Napoli",
-  city: "Afragola",
-  address: "Via Santa Maria la Nova, 1",
-  cap: "80021",
-  province: "NA",
-  phone: "+39 081 860 7157",
-  whatsapp: "393511531005",
-  hours: [{
-    day: "Lunedì",
-    time: "10:00 - 19:30"
-  }, {
-    day: "Mar - Sab",
-    time: "9:00 - 19:30"
-  }, {
-    day: "Domenica",
-    time: "10:00 - 19:30"
-  }]
-}];
+import { motion } from "framer-motion";
+
+const socialLinks = [
+  {
+    icon: Instagram,
+    href: "https://instagram.com/hairdotop",
+    label: "Instagram",
+  },
+  {
+    icon: Facebook,
+    href: "https://facebook.com/hairdotop",
+    label: "Facebook",
+  },
+];
+
+const quickLinks = [
+  { name: "Chi Siamo", href: "/chi-siamo" },
+  { name: "Sedi", href: "/sedi" },
+  { name: "Listini", href: "/listini" },
+  { name: "Hair Spa", href: "/hair-spa" },
+];
+
+const locations = [
+  {
+    name: "Sede Acerra",
+    city: "Acerra",
+    address: "Via Francesco Castaldi, 12",
+    cap: "80011",
+    province: "NA",
+    phone: "+39 081 062 3508",
+    whatsapp: "393891716135",
+    hours: [
+      { day: "Lunedì", time: "Chiuso" },
+      { day: "Mar - Sab", time: "9:00 - 18:30" },
+      { day: "Domenica", time: "Chiuso" },
+    ],
+  },
+  {
+    name: "Sede Le Porte di Napoli",
+    city: "Afragola",
+    address: "Via Santa Maria la Nova, 1",
+    cap: "80021",
+    province: "NA",
+    phone: "+39 081 860 7157",
+    whatsapp: "393511531005",
+    hours: [
+      { day: "Lunedì", time: "10:00 - 19:30" },
+      { day: "Mar - Sab", time: "9:00 - 19:30" },
+      { day: "Domenica", time: "10:00 - 19:30" },
+    ],
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
 export function Footer() {
   const [selectedLocation, setSelectedLocation] = useState<typeof locations[0] | null>(null);
-  return <footer className="bg-soft-black border-t border-primary/20">
-      <div className="container mx-auto px-6 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
+
+  return (
+    <footer className="bg-soft-black border-t border-primary/20 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      </div>
+
+      {/* Top Decorative Line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+      <div className="container mx-auto px-6 py-16 lg:py-20 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16"
+        >
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="font-playfair text-3xl tracking-wider text-primary">
-              Hair do top
+          <motion.div variants={itemVariants} className="space-y-6">
+            <Link to="/" className="inline-block group">
+              <span className="font-playfair text-3xl tracking-wider text-primary group-hover:text-accent transition-colors duration-300">
+                Hair do top
+              </span>
+              <motion.div
+                className="h-0.5 bg-gradient-to-r from-primary to-accent mt-2"
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              />
             </Link>
-            <p className="mt-6 text-foreground/60 font-cormorant text-lg leading-relaxed">
+            
+            <p className="text-foreground/60 font-cormorant text-lg leading-relaxed max-w-xs">
               L'eccellenza nella cura dei capelli dal 2019. Un'esperienza di
               lusso per la tua bellezza.
             </p>
-            <div className="flex space-x-4 mt-8">
-              {socialLinks.map(social => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label={social.label}>
-                  <social.icon size={20} />
-                </a>)}
+
+            {/* Decorative Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="font-cormorant text-sm text-primary">Premium Hair Care</span>
             </div>
-          </div>
+
+            {/* Social Links */}
+            <div className="flex space-x-4 pt-2">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+                  aria-label={social.label}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <social.icon size={20} className="group-hover:scale-110 transition-transform" />
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-playfair text-xl text-primary mb-6">
+          <motion.div variants={itemVariants}>
+            <h4 className="font-playfair text-xl text-primary mb-6 flex items-center gap-2">
+              <span className="w-8 h-px bg-gradient-to-r from-primary to-transparent" />
               Esplora
             </h4>
             <ul className="space-y-4">
-              {quickLinks.map(link => <li key={link.name}>
-                  <Link to={link.href} className="font-cormorant text-lg text-foreground/70 hover:text-accent transition-colors duration-300">
-                    {link.name}
+              {quickLinks.map((link, index) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                >
+                  <Link
+                    to={link.href}
+                    className="font-cormorant text-lg text-foreground/70 hover:text-accent transition-all duration-300 inline-flex items-center gap-2 group"
+                  >
+                    <span className="relative">
+                      {link.name}
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                   </Link>
-                </li>)}
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Contatti & Orari merged */}
-          
-
-          {/* Le Nostre Sedi */}
-          <div>
-            <h4 className="font-playfair text-xl text-primary mb-6">Contatti & Orari</h4>
+          {/* Locations */}
+          <motion.div variants={itemVariants}>
+            <h4 className="font-playfair text-xl text-primary mb-6 flex items-center gap-2">
+              <span className="w-8 h-px bg-gradient-to-r from-primary to-transparent" />
+              Contatti & Orari
+            </h4>
             <ul className="space-y-4">
-              {locations.map(location => <li key={location.name}>
-                  <button onClick={() => setSelectedLocation(location)} className="font-cormorant text-lg text-foreground/70 hover:text-accent transition-colors duration-300 text-left underline-offset-4 hover:underline flex items-center gap-2">
-                    <MapPin size={16} className="text-primary flex-shrink-0" />
-                    {location.name}
+              {locations.map((location, index) => (
+                <motion.li
+                  key={location.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                >
+                  <button
+                    onClick={() => setSelectedLocation(location)}
+                    className="font-cormorant text-lg text-foreground/70 hover:text-accent transition-all duration-300 text-left flex items-center gap-3 group w-full"
+                  >
+                    <span className="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                      <MapPin size={14} className="text-primary" />
+                    </span>
+                    <span className="relative flex-1">
+                      {location.name}
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </button>
-                </li>)}
+                </motion.li>
+              ))}
             </ul>
-          </div>
-        </div>
 
-        {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-primary/10">
+            {/* Quick Contact */}
+            <motion.div
+              className="mt-8 p-4 rounded-xl border border-primary/20 bg-primary/5"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <p className="font-cormorant text-sm text-foreground/60 mb-2">Prenota ora</p>
+              <a
+                href="https://wa.me/393891716135?text=Ciao! Vorrei prenotare un appuntamento. Grazie!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#25D366] hover:text-[#128C7E] font-cormorant text-lg transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp
+              </a>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mt-16 pt-8 border-t border-primary/10"
+        >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-foreground/50 font-cormorant text-sm tracking-wider">
-              © 2024 Hair do top. Tutti i diritti riservati.
+              © {new Date().getFullYear()} Hair do top. Tutti i diritti riservati.
             </p>
-            <div className="flex space-x-6">
-              <Link to="/privacy" className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors">
+            <div className="flex items-center space-x-6">
+              <Link
+                to="/privacy"
+                className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors relative group"
+              >
                 Privacy Policy
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
               </Link>
-              <Link to="/cookie" className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors">
+              <span className="text-foreground/20">|</span>
+              <Link
+                to="/cookie"
+                className="text-foreground/50 hover:text-primary font-cormorant text-sm tracking-wider transition-colors relative group"
+              >
                 Cookie Policy
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Location Popup */}
@@ -140,11 +262,19 @@ export function Footer() {
               {selectedLocation?.name}
             </DialogTitle>
           </DialogHeader>
-          
-          {selectedLocation && <div className="space-y-6 mt-4">
+
+          {selectedLocation && (
+            <motion.div
+              className="space-y-6 mt-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
               {/* Indirizzo */}
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5">
+                  <MapPin className="w-5 h-5 text-primary" />
+                </div>
                 <div>
                   <p className="font-cormorant text-lg text-foreground">
                     {selectedLocation.address}
@@ -157,22 +287,31 @@ export function Footer() {
 
               {/* Telefono */}
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href={`tel:${selectedLocation.phone.replace(/\s/g, "")}`} className="font-cormorant text-lg text-foreground hover:text-accent transition-colors">
+                <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5">
+                  <Phone className="w-5 h-5 text-primary" />
+                </div>
+                <a
+                  href={`tel:${selectedLocation.phone.replace(/\s/g, "")}`}
+                  className="font-cormorant text-lg text-foreground hover:text-accent transition-colors"
+                >
                   {selectedLocation.phone}
                 </a>
               </div>
 
               {/* Orari */}
               <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <div className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center bg-primary/5 flex-shrink-0">
+                  <Clock className="w-5 h-5 text-primary" />
+                </div>
                 <div className="space-y-2 flex-1">
-                  {selectedLocation.hours.map(h => <div key={h.day} className="flex justify-between font-cormorant text-lg">
+                  {selectedLocation.hours.map((h) => (
+                    <div key={h.day} className="flex justify-between font-cormorant text-lg">
                       <span className="text-foreground/70">{h.day}</span>
                       <span className={h.time === "Chiuso" ? "text-muted-foreground" : "text-primary"}>
                         {h.time}
                       </span>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -185,14 +324,20 @@ export function Footer() {
                   </a>
                 </Button>
                 <Button className="bg-[#25D366] hover:bg-[#128C7E] text-white" asChild>
-                  <a href={`https://wa.me/${selectedLocation.whatsapp}?text=${encodeURIComponent("Ciao! Vorrei prenotare un appuntamento. Grazie!")}`} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={`https://wa.me/${selectedLocation.whatsapp}?text=${encodeURIComponent("Ciao! Vorrei prenotare un appuntamento. Grazie!")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <MessageCircle className="w-4 h-4 mr-2" />
                     Prenota su WhatsApp
                   </a>
                 </Button>
               </div>
-            </div>}
+            </motion.div>
+          )}
         </DialogContent>
       </Dialog>
-    </footer>;
+    </footer>
+  );
 }
