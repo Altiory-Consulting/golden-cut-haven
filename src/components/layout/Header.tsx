@@ -44,6 +44,16 @@ export function Header() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
+  // Lock page scroll when mobile menu is open
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header
       className={cn(
