@@ -144,10 +144,10 @@ export function Header() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden fixed inset-0 top-20 bg-deep-black transition-all duration-500 z-40",
+          "lg:hidden fixed inset-0 top-20 bg-deep-black z-40 transition-all duration-500 ease-out",
           isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "opacity-100 pointer-events-auto translate-y-0"
+            : "opacity-0 pointer-events-none -translate-y-4"
         )}
       >
         <nav className="flex flex-col items-center justify-center h-full space-y-8 py-12">
@@ -157,16 +157,30 @@ export function Header() {
               to={item.href}
               className={cn(
                 "font-playfair text-2xl tracking-widest transition-all duration-300",
+                isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
                 location.pathname === item.href
                   ? "text-accent"
                   : "text-foreground hover:text-primary"
               )}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ 
+                transitionDelay: isMobileMenuOpen ? `${index * 0.08}s` : "0s"
+              }}
             >
               {item.name}
             </Link>
           ))}
-          <Button variant="luxury" size="xl" asChild className="mt-8">
+          <Button 
+            variant="luxury" 
+            size="xl" 
+            asChild 
+            className={cn(
+              "mt-8 transition-all duration-300",
+              isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+            style={{ 
+              transitionDelay: isMobileMenuOpen ? `${navigation.length * 0.08}s` : "0s"
+            }}
+          >
             <Link to="/sedi">Prenota Appuntamento</Link>
           </Button>
         </nav>
