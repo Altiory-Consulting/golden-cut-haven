@@ -22,6 +22,7 @@ import emanueleImg from "@/assets/team/emanuele.png";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { FAQ } from "@/components/sections/FAQ";
 import { VideoGallery } from "@/components/sections/VideoGallery";
+import { SocialSection } from "@/components/sections/SocialSection";
 import { motion } from "framer-motion";
 const teamMembers = [
 // Art Hair Directors
@@ -406,6 +407,9 @@ export default function Index() {
 
       {/* Video Gallery Section */}
       <VideoGallery />
+
+      {/* Social Section */}
+      <SocialSection />
 
       {/* Partners Section */}
       <section className="py-20 bg-soft-black border-t border-primary/10 overflow-hidden">
