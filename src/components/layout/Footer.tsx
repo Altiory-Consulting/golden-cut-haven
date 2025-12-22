@@ -104,7 +104,7 @@ export function Footer() {
         <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{
         once: true,
         margin: "-100px"
-      }} className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+      }} className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Brand */}
           <motion.div variants={itemVariants} className="space-y-6">
             <Link to="/" className="inline-block group">
