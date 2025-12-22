@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -44,16 +52,6 @@ export function Header() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  // Lock page scroll when mobile menu is open
-  useEffect(() => {
-    if (!isMobileMenuOpen) return;
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [isMobileMenuOpen]);
-
   return (
     <header
       className={cn(
@@ -65,14 +63,67 @@ export function Header() {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20 lg:h-24">
-          {/* Left: Mobile Menu Button */}
+          {/* Left: Mobile Menu Button (Sheet Trigger) */}
           <div className="flex items-center lg:w-1/3">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden text-primary hover:text-accent transition-colors"
-            >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <button className="lg:hidden text-primary hover:text-accent transition-colors">
+                  <Menu size={28} />
+                </button>
+              </SheetTrigger>
+              <SheetContent 
+                side="left" 
+                className="w-[300px] sm:w-[350px] bg-deep-black border-r border-primary/20 p-0"
+              >
+                <SheetHeader className="p-6 pb-4">
+                  <SheetTitle className="flex justify-center">
+                    <img
+                      src={logo}
+                      alt="Hair do top"
+                      className="h-20 w-auto object-contain"
+                    />
+                  </SheetTitle>
+                </SheetHeader>
+                
+                <Separator className="bg-primary/20" />
+                
+                <nav className="flex flex-col py-4">
+                  {navigation.map((item, index) => (
+                    <div key={item.name}>
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={cn(
+                          "block px-6 py-4 font-cormorant text-lg tracking-widest transition-all duration-300",
+                          location.pathname === item.href
+                            ? "text-accent bg-primary/10 border-l-2 border-accent"
+                            : "text-foreground/80 hover:text-primary hover:bg-primary/5"
+                        )}
+                      >
+                        {item.name}
+                      </Link>
+                      {index < navigation.length - 1 && (
+                        <Separator className="bg-primary/10 mx-6" />
+                      )}
+                    </div>
+                  ))}
+                </nav>
+                
+                <Separator className="bg-primary/20" />
+                
+                <div className="p-6">
+                  <Button 
+                    variant="luxury" 
+                    size="lg" 
+                    asChild 
+                    className="w-full"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Link to="/sedi">Prenota Appuntamento</Link>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
 
             {/* Desktop Dropdown Menu */}
             <div className="hidden lg:block relative dropdown-container">
@@ -149,52 +200,6 @@ export function Header() {
             </Button>
           </div>
         </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "lg:hidden fixed left-0 right-0 bottom-0 bg-deep-black z-50 transition-all duration-500 ease-out",
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto translate-y-0"
-            : "opacity-0 pointer-events-none -translate-y-4"
-        )}
-        style={{ top: '80px' }}
-      >
-        <nav className="flex flex-col items-center justify-center h-full space-y-8 py-12">
-          {navigation.map((item, index) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className={cn(
-                "font-playfair text-2xl tracking-widest transition-all duration-300",
-                isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-                location.pathname === item.href
-                  ? "text-accent"
-                  : "text-foreground hover:text-primary"
-              )}
-              style={{ 
-                transitionDelay: isMobileMenuOpen ? `${index * 0.08}s` : "0s"
-              }}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Button 
-            variant="luxury" 
-            size="xl" 
-            asChild 
-            className={cn(
-              "mt-8 transition-all duration-300",
-              isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            )}
-            style={{ 
-              transitionDelay: isMobileMenuOpen ? `${navigation.length * 0.08}s` : "0s"
-            }}
-          >
-            <Link to="/sedi">Prenota Appuntamento</Link>
-          </Button>
-        </nav>
       </div>
     </header>
   );
