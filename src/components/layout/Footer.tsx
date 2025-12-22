@@ -27,12 +27,13 @@ const quickLinks = [{
   href: "/hair-spa"
 }];
 // TikTok icon component
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-  </svg>
-);
-
+const TikTokIcon = ({
+  className
+}: {
+  className?: string;
+}) => <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+  </svg>;
 const locations = [{
   name: "Sede Acerra",
   city: "Acerra",
@@ -144,16 +145,7 @@ export function Footer() {
             </div>
 
             {/* Social Links */}
-            <div className="flex space-x-4 pt-2">
-              {socialLinks.map(social => <motion.a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group" aria-label={social.label} whileHover={{
-              scale: 1.1,
-              rotate: 5
-            }} whileTap={{
-              scale: 0.95
-            }}>
-                  <social.icon size={20} className="group-hover:scale-110 transition-transform" />
-                </motion.a>)}
-            </div>
+            
           </motion.div>
 
           {/* Quick Links */}
@@ -304,20 +296,10 @@ export function Footer() {
 
               {/* Social Icons */}
               <div className="flex items-center gap-4 pt-2 pb-4">
-                <a 
-                  href={selectedLocation.instagram} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737] flex items-center justify-center hover:scale-110 transition-transform"
-                >
+                <a href={selectedLocation.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737] flex items-center justify-center hover:scale-110 transition-transform">
                   <Instagram className="w-5 h-5 text-white" />
                 </a>
-                <a 
-                  href={selectedLocation.tiktok} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00f2ea] via-[#ff0050] to-black flex items-center justify-center hover:scale-110 transition-transform"
-                >
+                <a href={selectedLocation.tiktok} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00f2ea] via-[#ff0050] to-black flex items-center justify-center hover:scale-110 transition-transform">
                   <TikTokIcon className="w-5 h-5 text-white" />
                 </a>
               </div>
