@@ -4,7 +4,7 @@ import { Instagram, Facebook, Phone, MapPin, Clock, MessageCircle, ArrowUpRight,
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+
 const socialLinks = [{
   icon: Instagram,
   href: "https://instagram.com/hairdotop",
@@ -127,10 +127,14 @@ export function Footer() {
               viewport={{ once: true }}
             >
               <Link to="/" className="inline-block group mb-4">
-                <img 
-                  src={logo} 
-                  alt="Hair do top" 
-                  className="h-28 md:h-32 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(196,164,106,0.5)]"
+                <span className="font-playfair text-3xl md:text-4xl tracking-wider text-primary group-hover:text-accent transition-colors duration-300">
+                  Hair Do Top
+                </span>
+                <motion.div 
+                  className="h-0.5 bg-gradient-to-r from-primary to-accent mt-2" 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
                 />
               </Link>
             </motion.div>
