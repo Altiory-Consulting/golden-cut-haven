@@ -104,22 +104,31 @@ export function VideoGallery({ className }: VideoGalleryProps) {
                     muted
                     loop
                     playsInline
-                    preload="metadata"
-                    onMouseEnter={(e) => e.currentTarget.play()}
+                    preload="auto"
+                    poster=""
+                    onMouseEnter={(e) => {
+                      if (window.matchMedia('(hover: hover)').matches) {
+                        e.currentTarget.play();
+                      }
+                    }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.pause();
-                      e.currentTarget.currentTime = 0;
+                      if (window.matchMedia('(hover: hover)').matches) {
+                        e.currentTarget.pause();
+                        e.currentTarget.currentTime = 0;
+                      }
+                    }}
+                    onLoadedData={(e) => {
+                      // Imposta il primo frame come poster
+                      e.currentTarget.currentTime = 0.1;
                     }}
                   />
                   
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
                   
-                  {/* Play Button */}
+                  {/* Play Button - sempre visibile su mobile, hover su desktop */}
                   <motion.div
-                    className="absolute inset-0 flex items-center justify-center"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                   >
                     <motion.div
                       className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-xl"
