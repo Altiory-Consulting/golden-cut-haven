@@ -82,9 +82,13 @@ function VideoCard({ video, onOpen }: { video: { id: number; title: string; vide
             muted
             loop
             playsInline
-            preload="metadata"
-            onLoadedData={(e) => {
+            preload="auto"
+            poster={`${video.videoUrl}#t=0.1`}
+            onLoadedMetadata={(e) => {
+              // Imposta il primo frame immediatamente
               e.currentTarget.currentTime = 0.1;
+            }}
+            onCanPlay={() => {
               setIsLoaded(true);
             }}
             onMouseEnter={(e) => {
@@ -95,7 +99,7 @@ function VideoCard({ video, onOpen }: { video: { id: number; title: string; vide
             onMouseLeave={(e) => {
               if (window.matchMedia('(hover: hover)').matches) {
                 e.currentTarget.pause();
-                e.currentTarget.currentTime = 0;
+                e.currentTarget.currentTime = 0.1;
               }
             }}
           />
