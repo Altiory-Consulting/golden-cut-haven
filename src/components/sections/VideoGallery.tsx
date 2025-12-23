@@ -18,11 +18,39 @@ interface VideoGalleryProps {
 }
 
 // Componente per singolo video con lazy loading
-function VideoCard({ video, onOpen }: { video: { id: number; title: string; videoUrl: string }; onOpen: (url: string) => void }) {
+function VideoCard({
+  video,
+  onOpen,
+}: {
+  video: { id: number; title: string; videoUrl: string };
+  onOpen: (url: string) => void;
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [thumbUrl, setThumbUrl] = useState<string | null>(null);
+  const [canHover, setCanHover] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(hover: hover)").matches : true
+  );
+
   const cardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover)");
+    const update = () => setCanHover(mq.matches);
+    update();
+
+    // Safari < 14
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const anyMq: any = mq;
+    if (mq.addEventListener) mq.addEventListener("change", update);
+    else if (anyMq.addListener) anyMq.addListener(update);
+
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", update);
+      else if (anyMq.removeListener) anyMq.removeListener(update);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,12 +63,99 @@ function VideoCard({ video, onOpen }: { video: { id: number; title: string; vide
       { rootMargin: "100px" }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
+    if (cardRef.current) observer.observe(cardRef.current);
 
     return () => observer.disconnect();
   }, []);
+
+  // iOS/Safari spesso non mostra il poster/1° frame del <video> (risulta nero).
+  // Su dispositivi senza hover generiamo una thumbnail statica (canvas) e la mostriamo come <img>.
+  useEffect(() => {
+    if (!isVisible) return;
+    if (canHover) return;
+    if (thumbUrl) return;
+
+    let cancelled = false;
+
+    const v = document.createElement("video");
+    v.muted = true;
+    v.playsInline = true;
+    v.preload = "auto";
+    v.src = video.videoUrl;
+
+    const cleanup = () => {
+      v.pause();
+      v.removeAttribute("src");
+      v.load();
+    };
+
+    const capture = () => {
+      if (cancelled) return;
+      if (!v.videoWidth || !v.videoHeight) return;
+
+      const targetW = 480;
+      const targetH = Math.round((targetW * v.videoHeight) / v.videoWidth);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = targetW;
+      canvas.height = targetH;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      try {
+        ctx.drawImage(v, 0, 0, targetW, targetH);
+        const dataUrl = canvas.toDataURL("image/jpeg", 0.72);
+        if (!cancelled) setThumbUrl(dataUrl);
+      } catch {
+        // Se la cattura fallisce, lasciamo il placeholder (meglio che nero)
+      }
+    };
+
+    const onLoadedMetadata = () => {
+      try {
+        // Tentativo di portarsi su un frame iniziale non-zero
+        v.currentTime = 0.1;
+      } catch {
+        // ignore
+      }
+    };
+
+    const onSeeked = () => {
+      capture();
+      cleanup();
+    };
+
+    const onError = () => {
+      cleanup();
+    };
+
+    v.addEventListener("loadedmetadata", onLoadedMetadata);
+    v.addEventListener("seeked", onSeeked);
+    v.addEventListener("error", onError);
+
+    // In alcuni Safari iOS serve avviare (muted) per “sbloccare” la decodifica del frame
+    v.play().then(
+      () => {
+        v.pause();
+      },
+      () => {
+        // autoplay/play bloccato: continuerà a usare placeholder
+      }
+    );
+
+    v.load();
+
+    return () => {
+      cancelled = true;
+      v.removeEventListener("loadedmetadata", onLoadedMetadata);
+      v.removeEventListener("seeked", onSeeked);
+      v.removeEventListener("error", onError);
+      cleanup();
+    };
+  }, [isVisible, canHover, thumbUrl, video.videoUrl]);
+
+  const hasVisual = canHover ? isLoaded : Boolean(thumbUrl);
 
   return (
     <motion.div
@@ -58,11 +173,11 @@ function VideoCard({ video, onOpen }: { video: { id: number; title: string; vide
         transition={{ duration: 0.3 }}
         onClick={() => onOpen(video.videoUrl)}
       >
-        {/* Placeholder thumbnail */}
-        <div 
+        {/* Placeholder thumbnail (mai nero) */}
+        <div
           className={cn(
             "absolute inset-0 bg-gradient-to-br from-primary/20 via-soft-black to-deep-black transition-opacity duration-500",
-            isLoaded ? "opacity-0" : "opacity-100"
+            hasVisual ? "opacity-0" : "opacity-100"
           )}
         >
           <div className="absolute inset-0 flex items-center justify-center">
@@ -70,8 +185,19 @@ function VideoCard({ video, onOpen }: { video: { id: number; title: string; vide
           </div>
         </div>
 
-        {/* Video - carica solo quando visibile */}
-        {isVisible && (
+        {/* Mobile: thumbnail statica */}
+        {!canHover && thumbUrl && (
+          <img
+            src={thumbUrl}
+            alt={`Anteprima video portfolio ${video.id}`}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+
+        {/* Desktop: video (hover-to-play) */}
+        {isVisible && canHover && (
           <video
             ref={videoRef}
             src={video.videoUrl}
@@ -83,35 +209,27 @@ function VideoCard({ video, onOpen }: { video: { id: number; title: string; vide
             loop
             playsInline
             preload="auto"
-            poster={`${video.videoUrl}#t=0.1`}
             onLoadedMetadata={(e) => {
-              // Imposta il primo frame immediatamente
               e.currentTarget.currentTime = 0.1;
             }}
             onCanPlay={() => {
               setIsLoaded(true);
             }}
             onMouseEnter={(e) => {
-              if (window.matchMedia('(hover: hover)').matches) {
-                e.currentTarget.play();
-              }
+              e.currentTarget.play();
             }}
             onMouseLeave={(e) => {
-              if (window.matchMedia('(hover: hover)').matches) {
-                e.currentTarget.pause();
-                e.currentTarget.currentTime = 0.1;
-              }
+              e.currentTarget.pause();
+              e.currentTarget.currentTime = 0.1;
             }}
           />
         )}
-        
+
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-        
+
         {/* Play Button - sempre visibile su mobile, hover su desktop */}
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
-        >
+        <motion.div className="absolute inset-0 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
           <motion.div
             className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-xl"
             whileHover={{ scale: 1.1 }}
