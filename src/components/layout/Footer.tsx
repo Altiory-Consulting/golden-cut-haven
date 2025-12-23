@@ -120,13 +120,20 @@ export function Footer() {
       }} className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Brand */}
           <motion.div variants={itemVariants} className="space-y-6">
-            <Link to="/" className="inline-block group mb-4">
-              <img 
-                src={logo} 
-                alt="Hair do top" 
-                className="h-28 md:h-32 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(196,164,106,0.5)]"
-              />
-            </Link>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Link to="/" className="inline-block group mb-4">
+                <img 
+                  src={logo} 
+                  alt="Hair do top" 
+                  className="h-28 md:h-32 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(196,164,106,0.5)]"
+                />
+              </Link>
+            </motion.div>
             
             <p className="text-foreground/60 font-cormorant text-lg leading-relaxed max-w-xs">
               L'eccellenza nella cura dei capelli dal 2019. Un'esperienza di
