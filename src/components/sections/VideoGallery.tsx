@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
@@ -15,6 +15,115 @@ const videos = uploadedVideos.map((num) => ({
 
 interface VideoGalleryProps {
   className?: string;
+}
+
+// Componente per singolo video con lazy loading
+function VideoCard({ video, onOpen }: { video: { id: number; title: string; videoUrl: string }; onOpen: (url: string) => void }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "100px" }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      className="flex-shrink-0 snap-center"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4 }}
+    >
+      <motion.div
+        className="relative w-[200px] md:w-[240px] aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer group"
+        whileHover={{ scale: 1.05, y: -10 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.3 }}
+        onClick={() => onOpen(video.videoUrl)}
+      >
+        {/* Placeholder thumbnail */}
+        <div 
+          className={cn(
+            "absolute inset-0 bg-gradient-to-br from-primary/20 via-soft-black to-deep-black transition-opacity duration-500",
+            isLoaded ? "opacity-0" : "opacity-100"
+          )}
+        >
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-primary/10 animate-pulse" />
+          </div>
+        </div>
+
+        {/* Video - carica solo quando visibile */}
+        {isVisible && (
+          <video
+            ref={videoRef}
+            src={video.videoUrl}
+            className={cn(
+              "w-full h-full object-cover transition-all duration-700 group-hover:scale-110",
+              isLoaded ? "opacity-100" : "opacity-0"
+            )}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onLoadedData={(e) => {
+              e.currentTarget.currentTime = 0.1;
+              setIsLoaded(true);
+            }}
+            onMouseEnter={(e) => {
+              if (window.matchMedia('(hover: hover)').matches) {
+                e.currentTarget.play();
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (window.matchMedia('(hover: hover)').matches) {
+                e.currentTarget.pause();
+                e.currentTarget.currentTime = 0;
+              }
+            }}
+          />
+        )}
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+        
+        {/* Play Button - sempre visibile su mobile, hover su desktop */}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
+        >
+          <motion.div
+            className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-xl"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Play className="w-6 h-6 text-deep-black ml-1" fill="currentColor" />
+          </motion.div>
+        </motion.div>
+
+        {/* Shine Effect on Hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
 }
 
 export function VideoGallery({ className }: VideoGalleryProps) {
@@ -81,70 +190,8 @@ export function VideoGallery({ className }: VideoGalleryProps) {
               msOverflowStyle: "none",
             }}
           >
-            {videos.map((video, index) => (
-              <motion.div
-                key={video.id}
-                className="flex-shrink-0 snap-center"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: Math.min(index * 0.05, 0.5), duration: 0.4 }}
-              >
-                <motion.div
-                  className="relative w-[200px] md:w-[240px] aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer group"
-                  whileHover={{ scale: 1.05, y: -10 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.3 }}
-                  onClick={() => openModal(video.videoUrl)}
-                >
-                  {/* Video */}
-                  <video
-                    src={video.videoUrl}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    poster=""
-                    onMouseEnter={(e) => {
-                      if (window.matchMedia('(hover: hover)').matches) {
-                        e.currentTarget.play();
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (window.matchMedia('(hover: hover)').matches) {
-                        e.currentTarget.pause();
-                        e.currentTarget.currentTime = 0;
-                      }
-                    }}
-                    onLoadedData={(e) => {
-                      // Imposta il primo frame come poster
-                      e.currentTarget.currentTime = 0.1;
-                    }}
-                  />
-                  
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-                  
-                  {/* Play Button - sempre visibile su mobile, hover su desktop */}
-                  <motion.div
-                    className="absolute inset-0 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <motion.div
-                      className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-xl"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Play className="w-6 h-6 text-deep-black ml-1" fill="currentColor" />
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Shine Effect on Hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  </div>
-                </motion.div>
-              </motion.div>
+            {videos.map((video) => (
+              <VideoCard key={video.id} video={video} onOpen={openModal} />
             ))}
           </div>
         </div>
