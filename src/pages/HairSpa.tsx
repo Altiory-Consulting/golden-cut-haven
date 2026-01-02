@@ -501,85 +501,55 @@ export default function HairSpa() {
       {/* Final CTA Section */}
       <section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-b from-soft-black to-deep-black relative overflow-hidden">
         {/* Animated background elements */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
-          animate={{ 
+          animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
             scale: [1, 1.2, 1],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl"
-          animate={{ 
+          animate={{
             x: [0, -30, 0],
             y: [0, -50, 0],
             scale: [1, 1.3, 1],
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
-        
+
         <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
           <div className="max-w-3xl mx-auto">
             <ScrollReveal>
-              <motion.div 
-                className="inline-flex items-center gap-2 bg-primary/20 border border-primary/50 rounded-full px-4 sm:px-6 py-2 mb-6 sm:mb-8"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Gift className="w-4 h-4 text-primary" />
-                <span className="font-cormorant text-primary text-xs sm:text-sm tracking-wide">OFFERTA SPECIALE</span>
-              </motion.div>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.1}>
               <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 sm:mb-6">
-                Non Perdere Questa Occasione
+                Prenota il tuo Hair Spa
               </h2>
             </ScrollReveal>
-            
-            <ScrollReveal delay={0.2}>
+
+            <ScrollReveal delay={0.1}>
               <p className="font-cormorant text-lg sm:text-xl text-foreground/70 max-w-xl mx-auto mb-8 sm:mb-10">
-                Prenota oggi il tuo trattamento Hair Spa e scopri il piacere di capelli rigenerati
+                Vuoi maggiori informazioni o vuoi bloccare un appuntamento? Scrivici su WhatsApp.
               </p>
             </ScrollReveal>
 
-            {/* Price Display */}
-            <ScrollReveal delay={0.3}>
-              <div className="mb-8 sm:mb-10">
-                <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2">
-                  <span className="font-playfair text-2xl sm:text-3xl text-foreground/50 line-through">€130</span>
-                  <motion.span 
-                    className="font-playfair text-5xl sm:text-6xl text-primary"
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    €65
-                  </motion.span>
-                </div>
-                <p className="font-cormorant text-sm sm:text-base text-foreground/60">Sconto del 50% - Offerta limitata</p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.4}>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button 
-                  size="xl" 
-                  asChild 
+            <ScrollReveal delay={0.2}>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="xl"
+                  asChild
                   className="bg-[#25D366] hover:bg-[#128C7E] text-white text-base sm:text-lg px-8 sm:px-12 py-6 sm:py-8 rounded-full shadow-2xl shadow-[#25D366]/30 transition-all duration-300 w-full sm:w-auto"
                 >
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
-                    Prenota Subito su WhatsApp
+                    Prenota su WhatsApp
                   </a>
                 </Button>
               </motion.div>
             </ScrollReveal>
-            
-            <ScrollReveal delay={0.5}>
+
+            <ScrollReveal delay={0.3}>
               <p className="font-cormorant text-foreground/50 text-xs sm:text-sm mt-4 sm:mt-6">
                 Clicca il pulsante per aprire WhatsApp e prenotare direttamente
               </p>
