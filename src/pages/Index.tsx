@@ -117,7 +117,7 @@ const reviews = [{
   text: "Finalmente ho trovato il mio salone di fiducia. Ambiente raffinato e personale competente.",
   rating: 5
 }, {
-  name: "Francesca Milano",
+  name: "Francesca Esposito",
   text: "Ogni visita è un momento di puro relax. I trattamenti Hair Spa sono semplicemente divini.",
   rating: 5
 }];
