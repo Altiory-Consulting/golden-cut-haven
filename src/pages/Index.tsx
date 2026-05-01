@@ -171,96 +171,167 @@ export default function Index() {
     }
   };
   return <div className="bg-background">
-      {/* Hero Section with Parallax */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video with Parallax */}
+      {/* Hero Section — Editorial Cinematic */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Video */}
         <div className="absolute inset-0">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+          <motion.video
+            autoPlay loop muted playsInline
+            className="w-full h-full object-cover"
+            initial={{ scale: 1.15 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
+          >
             <source src="/videos/salone-acerra.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-deep-black/70 via-deep-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-transparent to-deep-black/30" />
+          </motion.video>
+          <div className="absolute inset-0 bg-gradient-to-r from-deep-black/85 via-deep-black/55 to-deep-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-deep-black/40" />
+          {/* Vignette */}
+          <div className="absolute inset-0 [background:radial-gradient(ellipse_at_center,transparent_55%,hsl(var(--deep-black))_100%)]" />
         </div>
 
+        {/* Side editorial label */}
+        <motion.div
+          className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-left items-center gap-4 z-10"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+        >
+          <span className="w-12 h-px bg-primary/60" />
+          <span className="font-cormorant text-xs tracking-[0.5em] uppercase text-primary/80">
+            Est. — Hair Couture
+          </span>
+        </motion.div>
+
+        {/* Right index */}
+        <motion.div
+          className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-10 text-right"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}
+        >
+          <p className="font-playfair italic text-primary/70 text-sm tracking-widest">N° 01</p>
+          <div className="w-px h-24 bg-gradient-to-b from-primary/60 to-transparent ml-auto mt-3" />
+        </motion.div>
+
         {/* Content */}
-        <div className="container mx-auto px-6 relative z-10 pt-24">
-          <div className="max-w-3xl">
-            <motion.p className="font-cormorant text-primary text-lg md:text-xl tracking-[0.3em] uppercase mb-6" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.2,
-            duration: 0.6
-          }}>
-              Salone di Bellezza Premium
-            </motion.p>
-            <motion.h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl text-foreground leading-tight mb-8" initial={{
-            opacity: 0,
-            y: 30
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.4,
-            duration: 0.6
-          }}>
-              Hair do{" "}
-              <span className="text-gradient-gold italic">top</span>
-            </motion.h1>
-            <motion.p className="font-cormorant text-xl md:text-2xl text-foreground/70 leading-relaxed mb-12 max-w-xl" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.6,
-            duration: 0.6
-          }}>
-              L'arte della bellezza incontra l'eleganza senza tempo.
-              Scopri un'esperienza esclusiva dedicata alla cura dei tuoi capelli.
-            </motion.p>
-            <motion.div className="flex flex-col sm:flex-row gap-6" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.8,
-            duration: 0.6
-          }}>
-              <Button variant="luxury" size="xl" asChild>
-                <Link to="/sedi">Prenota Appuntamento</Link>
-              </Button>
-              <Button variant="hero" size="xl" asChild>
-                <Link to="/listini">Scopri i Servizi</Link>
-              </Button>
+        <div className="container mx-auto px-6 relative z-10 pt-32 pb-24">
+          <div className="max-w-5xl">
+            {/* Kicker */}
+            <motion.div
+              className="flex items-center gap-4 mb-8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+            >
+              <span className="w-16 h-px bg-primary" />
+              <p className="font-cormorant text-primary text-sm md:text-base tracking-[0.4em] uppercase">
+                Salone · Couture · Premium
+              </p>
             </motion.div>
+
+            {/* Massive editorial headline */}
+            <h1 className="font-playfair text-foreground leading-[0.92] tracking-tight mb-10">
+              <motion.span
+                className="block text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[9.5rem] xl:text-[11rem] font-light"
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Hair do
+              </motion.span>
+              <motion.span
+                className="block italic text-gradient-gold text-[22vw] sm:text-[16vw] md:text-[13vw] lg:text-[12rem] xl:text-[14rem] -mt-4 md:-mt-8 pl-[10vw] md:pl-[18vw]"
+                initial={{ opacity: 0, y: 80, letterSpacing: '0.1em' }}
+                animate={{ opacity: 1, y: 0, letterSpacing: 'normal' }}
+                transition={{ delay: 0.55, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                top.
+              </motion.span>
+            </h1>
+
+            {/* Two-column footer of hero */}
+            <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-end mt-12 md:mt-16">
+              <motion.p
+                className="font-cormorant text-lg md:text-xl text-foreground/75 leading-relaxed max-w-md border-l border-primary/40 pl-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.7 }}
+              >
+                L'arte della bellezza incontra l'eleganza senza tempo.
+                Un'esperienza esclusiva dedicata alla cura dei tuoi capelli.
+              </motion.p>
+
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.05, duration: 0.7 }}
+              >
+                <Button variant="luxury" size="xl" asChild>
+                  <Link to="/sedi">Prenota Appuntamento</Link>
+                </Button>
+                <Button variant="hero" size="xl" asChild>
+                  <Link to="/listini">Scopri i Servizi</Link>
+                </Button>
+              </motion.div>
+            </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div className="absolute bottom-10 left-1/2 -translate-x-1/2" initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1,
-        y: [0, 10, 0]
-      }} transition={{
-        opacity: {
-          delay: 1.2
-        },
-        y: {
-          repeat: Infinity,
-          duration: 2,
-          ease: "easeInOut"
-        }
-      }}>
-          <div className="w-px h-20 bg-gradient-to-b from-primary to-transparent" />
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+        >
+          <span className="font-cormorant text-xs tracking-[0.4em] uppercase text-primary/70">Scroll</span>
+          <motion.div
+            className="w-px h-16 bg-gradient-to-b from-primary to-transparent"
+            animate={{ scaleY: [0.4, 1, 0.4], originY: 0 }}
+            transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+          />
         </motion.div>
+      </section>
+
+      {/* Manifesto — Editorial intro */}
+      <section className="relative bg-deep-black py-28 lg:py-40 overflow-hidden">
+        {/* Giant outlined background word */}
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2 font-playfair italic text-[20vw] leading-none whitespace-nowrap text-stroke-gold opacity-[0.08] select-none"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 0.08, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+        >
+          couture
+        </motion.span>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <ScrollReveal direction="left" className="lg:col-span-5">
+              <p className="font-cormorant text-primary text-sm tracking-[0.4em] uppercase mb-6">
+                — Il Nostro Manifesto
+              </p>
+              <h2 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05]">
+                Bellezza <span className="italic text-gradient-gold">disegnata</span><br />
+                su misura.
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={0.15} className="lg:col-span-6 lg:col-start-7">
+              <p className="font-cormorant text-xl md:text-2xl text-foreground/70 leading-relaxed mb-8">
+                Crediamo che ogni capello racconti una storia. La nostra missione è
+                trasformare ogni visita in un rituale di stile, dove tecnica sartoriale
+                e prodotti d'eccellenza si fondono in un'esperienza memorabile.
+              </p>
+              <div className="flex items-center gap-6">
+                <span className="w-20 h-px bg-primary" />
+                <p className="font-playfair italic text-primary text-lg">Hair do top — dal 2014</p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
       </section>
 
       {/* Stats Section */}
