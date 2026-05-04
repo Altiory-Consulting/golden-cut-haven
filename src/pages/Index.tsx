@@ -191,17 +191,6 @@ export default function Index() {
         </div>
 
         {/* Side editorial label */}
-        <motion.div
-          className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-left items-center gap-4 z-10"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
-        >
-          <span className="w-12 h-px bg-primary/60" />
-          <span className="font-cormorant text-xs tracking-[0.5em] uppercase text-primary/80">
-            Est. — Hair Couture
-          </span>
-        </motion.div>
 
         {/* Right index */}
         <motion.div
@@ -216,17 +205,6 @@ export default function Index() {
         <div className="container mx-auto px-6 relative z-10 pt-32 pb-24">
           <div className="max-w-5xl">
             {/* Kicker */}
-            <motion.div
-              className="flex items-center gap-4 mb-8"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.7 }}
-            >
-              <span className="w-16 h-px bg-primary" />
-              <p className="font-cormorant text-primary text-sm md:text-base tracking-[0.4em] uppercase">
-                Salone · Couture · Premium
-              </p>
-            </motion.div>
 
             {/* Massive editorial headline */}
             <h1 className="font-playfair text-foreground leading-[0.92] tracking-tight mb-10">
