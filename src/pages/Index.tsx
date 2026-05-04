@@ -277,7 +277,7 @@ export default function Index() {
               <p className="font-cormorant text-primary text-sm tracking-[0.4em] uppercase mb-6">
                 — Il Nostro Manifesto
               </p>
-              <h2 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05]">
+              <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.05]">
                 Bellezza <span className="italic text-gradient-gold">disegnata</span><br />
                 su misura.
               </h2>
