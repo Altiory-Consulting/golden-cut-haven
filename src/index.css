@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @layer base {
   :root {
@@ -17,8 +17,8 @@
     --popover: 0 0% 5%;
     --popover-foreground: 40 60% 89%;
 
-    /* Warm Gold - Primary accent */
-    --primary: 40 45% 59%;
+    /* Warm Tan/Gold - HomeSalon TNC accent */
+    --primary: 32 42% 58%;
     --primary-foreground: 0 0% 0%;
 
     /* Champagne - Secondary */
@@ -29,8 +29,8 @@
     --muted: 40 17% 15%;
     --muted-foreground: 40 17% 50%;
 
-    /* Bright Gold - Accent/Hover */
-    --accent: 42 68% 70%;
+    /* Bright tan accent/hover */
+    --accent: 32 50% 68%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
@@ -40,11 +40,11 @@
     --input: 40 17% 20%;
     --ring: 40 45% 59%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
     /* Custom luxury tokens */
-    --gold: 40 45% 59%;
-    --gold-bright: 42 68% 70%;
+    --gold: 32 42% 58%;
+    --gold-bright: 32 50% 68%;
     --champagne: 40 60% 89%;
     --dark-gold: 40 17% 24%;
     --deep-black: 0 0% 0%;
@@ -86,11 +86,17 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Anton', 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.95;
   }
 }
 
