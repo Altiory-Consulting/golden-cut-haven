@@ -318,7 +318,7 @@ export function Footer() {
                     Chiama Ora
                   </a>
                 </Button>
-                <Button className="bg-[#25D366] hover:bg-[#128C7E] text-white" asChild>
+                <Button variant="whatsapp" asChild>
                   <a href={`https://wa.me/${selectedLocation.whatsapp}?text=${encodeURIComponent("Ciao! Vorrei prenotare un appuntamento. Grazie!")}`} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-4 h-4 mr-2" />
                     Prenota su WhatsApp
