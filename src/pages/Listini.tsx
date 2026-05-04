@@ -259,14 +259,14 @@ export default function Listini() {
             <p className="font-cormorant text-xl text-dark-gold max-w-xl mx-auto mb-10">
               Contattaci per prenotare o per ricevere una consulenza personalizzata
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="champagne" size="xl" asChild className="bg-deep-black text-champagne hover:bg-deep-black/90">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                <Button variant="champagne" size="xl" asChild className="w-full sm:w-auto bg-deep-black text-champagne hover:bg-deep-black/90">
                   <Link to="/sedi">Prenota Appuntamento</Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="xl" asChild className="border-deep-black text-deep-black hover:bg-deep-black hover:text-champagne">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                <Button variant="outline" size="xl" asChild className="w-full sm:w-auto border-deep-black text-deep-black hover:bg-deep-black hover:text-champagne">
                   <Link to="/hair-spa">Scopri Hair Spa</Link>
                 </Button>
               </motion.div>
