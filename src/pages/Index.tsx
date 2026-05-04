@@ -239,15 +239,15 @@ export default function Index() {
               </motion.p>
 
               <motion.div
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.05, duration: 0.7 }}
               >
-                <Button variant="luxury" size="xl" asChild>
+                <Button variant="luxury" size="xl" asChild className="w-full sm:w-auto">
                   <Link to="/sedi">Prenota Appuntamento</Link>
                 </Button>
-                <Button variant="hero" size="xl" asChild>
+                <Button variant="hero" size="xl" asChild className="w-full sm:w-auto">
                   <Link to="/listini">Scopri i Servizi</Link>
                 </Button>
               </motion.div>
