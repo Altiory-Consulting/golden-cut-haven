@@ -94,11 +94,11 @@ export default function Sedi() {
                       transition={{ duration: 0.2 }}
                     >
                       <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="font-cormorant text-lg text-foreground">
+                      <div className="min-w-0 flex-1">
+                        <p className="font-cormorant text-lg text-foreground break-words">
                           {location.address}
                         </p>
-                        <p className="font-cormorant text-foreground/60">
+                        <p className="font-cormorant text-foreground/60 break-words">
                           {location.cap} {location.city} ({location.province})
                         </p>
                       </div>
@@ -110,7 +110,7 @@ export default function Sedi() {
                       transition={{ duration: 0.2 }}
                     >
                       <Phone className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                      <p className="font-cormorant text-lg text-foreground">
+                      <p className="font-cormorant text-lg text-foreground break-words min-w-0 flex-1">
                         {location.phone}
                       </p>
                     </motion.div>
@@ -121,7 +121,7 @@ export default function Sedi() {
                       transition={{ duration: 0.2 }}
                     >
                       <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                      <p className="font-cormorant text-foreground/70">
+                      <p className="font-cormorant text-foreground/70 break-words min-w-0 flex-1 text-sm sm:text-base">
                         {location.hours}
                       </p>
                     </motion.div>
