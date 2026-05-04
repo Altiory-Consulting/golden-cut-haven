@@ -65,8 +65,11 @@ export default {
         },
       },
       fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        cormorant: ["Cormorant Garamond", "serif"],
+        playfair: ["Anton", "Barlow Condensed", "sans-serif"],
+        cormorant: ["Inter", "system-ui", "sans-serif"],
+        display: ["Anton", "Barlow Condensed", "sans-serif"],
+        condensed: ["Barlow Condensed", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
