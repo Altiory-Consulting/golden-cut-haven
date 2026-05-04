@@ -6,58 +6,58 @@
 
 @layer base {
   :root {
-    /* Deep Black - Primary Background */
+    /* Pure Black - from logo */
     --background: 0 0% 0%;
-    --foreground: 40 60% 89%;
+    --foreground: 46 69% 89%;
 
     /* Champagne - Light sections */
-    --card: 40 60% 89%;
+    --card: 46 69% 89%;
     --card-foreground: 0 0% 0%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 40 60% 89%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 46 69% 89%;
 
-    /* Warm Tan/Gold - HomeSalon TNC accent */
-    --primary: 32 42% 58%;
+    /* Logo Gold - exact match */
+    --primary: 42 58% 66%;
     --primary-foreground: 0 0% 0%;
 
     /* Champagne - Secondary */
-    --secondary: 40 60% 89%;
+    --secondary: 46 69% 89%;
     --secondary-foreground: 0 0% 0%;
 
     /* Dark Gold Gray - Muted elements */
-    --muted: 40 17% 15%;
-    --muted-foreground: 40 17% 50%;
+    --muted: 42 20% 12%;
+    --muted-foreground: 42 25% 55%;
 
-    /* Bright tan accent/hover */
-    --accent: 32 50% 68%;
+    /* Bright gold accent/hover */
+    --accent: 46 69% 78%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 40 17% 20%;
-    --input: 40 17% 20%;
-    --ring: 40 45% 59%;
+    --border: 42 25% 18%;
+    --input: 42 25% 18%;
+    --ring: 42 58% 66%;
 
     --radius: 0.5rem;
 
-    /* Custom luxury tokens */
-    --gold: 32 42% 58%;
-    --gold-bright: 32 50% 68%;
-    --champagne: 40 60% 89%;
-    --dark-gold: 40 17% 24%;
+    /* Custom luxury tokens - logo-derived */
+    --gold: 42 58% 66%;
+    --gold-bright: 46 69% 78%;
+    --champagne: 46 69% 89%;
+    --dark-gold: 42 25% 22%;
     --deep-black: 0 0% 0%;
-    --soft-black: 0 0% 5%;
+    --soft-black: 0 0% 4%;
 
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(40 45% 59%) 0%, hsl(42 68% 70%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 100%);
-    --gradient-champagne: linear-gradient(180deg, hsl(40 60% 89%) 0%, hsl(40 50% 85%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(42 58% 66%) 0%, hsl(46 69% 82%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 4%) 100%);
+    --gradient-champagne: linear-gradient(180deg, hsl(46 69% 89%) 0%, hsl(42 50% 85%) 100%);
 
     /* Shadows */
-    --shadow-gold: 0 4px 30px hsl(40 45% 59% / 0.15);
-    --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+    --shadow-gold: 0 4px 30px hsl(42 58% 66% / 0.18);
+    --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.6);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -102,18 +102,18 @@
 
 @layer utilities {
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(40 45% 59%) 0%, hsl(42 68% 70%) 100%);
+    background: linear-gradient(135deg, hsl(42 58% 66%) 0%, hsl(46 69% 82%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .border-gradient-gold {
-    border-image: linear-gradient(135deg, hsl(40 45% 59%) 0%, hsl(42 68% 70%) 100%) 1;
+    border-image: linear-gradient(135deg, hsl(42 58% 66%) 0%, hsl(46 69% 82%) 100%) 1;
   }
 
   .bg-gradient-gold {
-    background: linear-gradient(135deg, hsl(40 45% 59%) 0%, hsl(42 68% 70%) 100%);
+    background: linear-gradient(135deg, hsl(42 58% 66%) 0%, hsl(46 69% 82%) 100%);
   }
 
   .hover-gold-glow {
@@ -121,7 +121,7 @@
   }
 
   .hover-gold-glow:hover {
-    text-shadow: 0 0 20px hsl(40 45% 59% / 0.5);
+    text-shadow: 0 0 20px hsl(42 58% 66% / 0.5);
   }
 
   .gold-underline {
@@ -136,7 +136,7 @@
     transform: translateX(-50%);
     width: 60px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(40 45% 59%), transparent);
+    background: linear-gradient(90deg, transparent, hsl(42 58% 66%), transparent);
   }
 
   .luxury-card {
@@ -145,7 +145,7 @@
 
   .luxury-card:hover {
     @apply border-primary/40;
-    box-shadow: 0 0 40px hsl(40 45% 59% / 0.1);
+    box-shadow: 0 0 40px hsl(42 58% 66% / 0.1);
     transform: translateY(-2px);
   }
 
@@ -156,7 +156,7 @@
 
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 40px hsl(40 45% 59% / 0.15);
+    box-shadow: 0 10px 40px hsl(42 58% 66% / 0.15);
   }
 
   .hover-glow {
@@ -164,7 +164,7 @@
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 30px hsl(40 45% 59% / 0.2);
+    box-shadow: 0 0 30px hsl(42 58% 66% / 0.2);
   }
 
   .image-hover {
@@ -186,7 +186,7 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: linear-gradient(90deg, hsl(40 45% 59%), hsl(42 68% 70%));
+    background: linear-gradient(90deg, hsl(42 58% 66%), hsl(46 69% 82%));
     transition: width 0.3s ease;
   }
 
