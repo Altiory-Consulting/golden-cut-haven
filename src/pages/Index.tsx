@@ -209,7 +209,7 @@ export default function Index() {
             {/* Massive editorial headline */}
             <h1 className="font-playfair text-foreground leading-[0.92] tracking-tight mb-10">
               <motion.span
-                className="block text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[9.5rem] xl:text-[11rem] font-light"
+                className="block text-[14vw] sm:text-[12vw] md:text-[11vw] lg:text-[9.5rem] xl:text-[11rem] font-light"
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -217,7 +217,7 @@ export default function Index() {
                 Hair do
               </motion.span>
               <motion.span
-                className="block italic text-gradient-gold text-[22vw] sm:text-[16vw] md:text-[13vw] lg:text-[12rem] xl:text-[14rem] -mt-4 md:-mt-8 pl-[10vw] md:pl-[18vw]"
+                className="block italic text-gradient-gold text-[18vw] sm:text-[14vw] md:text-[13vw] lg:text-[12rem] xl:text-[14rem] -mt-2 md:-mt-8 pl-[6vw] md:pl-[18vw]"
                 initial={{ opacity: 0, y: 80, letterSpacing: '0.1em' }}
                 animate={{ opacity: 1, y: 0, letterSpacing: 'normal' }}
                 transition={{ delay: 0.55, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
@@ -239,15 +239,15 @@ export default function Index() {
               </motion.p>
 
               <motion.div
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.05, duration: 0.7 }}
               >
-                <Button variant="luxury" size="xl" asChild>
+                <Button variant="luxury" size="xl" asChild className="w-full sm:w-auto">
                   <Link to="/sedi">Prenota Appuntamento</Link>
                 </Button>
-                <Button variant="hero" size="xl" asChild>
+                <Button variant="hero" size="xl" asChild className="w-full sm:w-auto">
                   <Link to="/listini">Scopri i Servizi</Link>
                 </Button>
               </motion.div>

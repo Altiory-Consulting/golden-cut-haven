@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "group/btn relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 font-condensed tracking-[0.18em] uppercase rounded-full will-change-transform hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
+  "group/btn relative inline-flex items-center justify-center gap-2 text-center text-sm font-medium ring-offset-background transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 font-condensed tracking-[0.12em] sm:tracking-[0.18em] uppercase rounded-full will-change-transform hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] max-w-full",
   {
     variants: {
       variant: {
@@ -31,10 +31,10 @@ const buttonVariants = cva(
           "bg-[#25D366] hover:bg-[#1FB855] text-white shadow-[0_4px_20px_-4px_#25D36680,inset_0_1px_0_#ffffff40] hover:shadow-[0_14px_44px_-8px_#25D366cc,inset_0_1px_0_#ffffff60]",
       },
       size: {
-        default: "h-11 px-7 py-2",
-        sm: "h-9 px-5 text-xs",
-        lg: "h-13 px-10 text-base [height:3.25rem]",
-        xl: "h-16 px-12 text-lg",
+        default: "h-11 px-5 sm:px-7 py-2",
+        sm: "h-9 px-4 sm:px-5 text-xs",
+        lg: "h-13 px-6 sm:px-10 text-sm sm:text-base [height:3.25rem]",
+        xl: "h-14 sm:h-16 px-6 sm:px-12 text-sm sm:text-lg",
         icon: "h-11 w-11",
       },
     },
