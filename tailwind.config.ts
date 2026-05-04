@@ -65,11 +65,11 @@ export default {
         },
       },
       fontFamily: {
-        playfair: ["Anton", "Barlow Condensed", "sans-serif"],
-        cormorant: ["Inter", "system-ui", "sans-serif"],
-        display: ["Anton", "Barlow Condensed", "sans-serif"],
-        condensed: ["Barlow Condensed", "sans-serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        playfair: ["Cormorant Garamond", "serif"],
+        cormorant: ["Jost", "system-ui", "sans-serif"],
+        display: ["Cormorant Garamond", "serif"],
+        condensed: ["Jost", "system-ui", "sans-serif"],
+        sans: ["Jost", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
