@@ -78,7 +78,7 @@ export default function Sedi() {
             {locations.map((location, index) => (
               <ScrollReveal key={location.city} delay={index * 0.15} direction={index === 0 ? "left" : "right"}>
                 <motion.div 
-                  className="luxury-card p-8 lg:p-10 ring-1 ring-primary/30 h-full"
+                  className="luxury-card p-6 sm:p-8 lg:p-10 ring-1 ring-primary/30 h-full overflow-hidden"
                   whileHover={{ y: -8, borderColor: "hsl(40, 45%, 59%)", boxShadow: "0 20px 60px hsl(40 45% 59% / 0.15)" }}
                   transition={{ duration: 0.3 }}
                 >
