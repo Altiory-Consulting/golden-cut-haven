@@ -53,7 +53,7 @@ export default function Listini() {
             I Nostri Servizi
           </motion.p>
           <motion.h1 
-            className="font-playfair text-5xl md:text-6xl lg:text-7xl text-foreground mb-6"
+            className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
