@@ -157,7 +157,7 @@ export default function Sedi() {
                       </Button>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                      <Button size="lg" className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white" asChild>
+                      <Button variant="whatsapp" size="lg" className="w-full" asChild>
                         <a href={`https://wa.me/${location.whatsapp}?text=${encodeURIComponent("Ciao! Vorrei prenotare un appuntamento. Grazie!")}`} target="_blank" rel="noopener noreferrer">
                           <MessageCircle className="w-4 h-4 mr-2" />
                           Prenota su WhatsApp

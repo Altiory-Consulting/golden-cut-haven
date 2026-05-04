@@ -110,9 +110,9 @@ export default function HairSpa() {
               whileTap={{ scale: 0.95 }}
             >
               <Button 
+                variant="whatsapp"
                 size="xl" 
                 asChild 
-                className="bg-[#25D366] hover:bg-[#128C7E] text-white text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-2xl shadow-[#25D366]/30 transition-all duration-300"
               >
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
@@ -265,9 +265,10 @@ export default function HairSpa() {
               
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button 
+                  variant="whatsapp"
                   size="lg" 
                   asChild 
-                  className="bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full w-full sm:w-auto"
+                  className="w-full sm:w-auto"
                 >
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 mr-2" />
@@ -537,9 +538,10 @@ export default function HairSpa() {
             <ScrollReveal delay={0.2}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
+                  variant="whatsapp"
                   size="xl"
                   asChild
-                  className="bg-[#25D366] hover:bg-[#128C7E] text-white text-base sm:text-lg px-8 sm:px-12 py-6 sm:py-8 rounded-full shadow-2xl shadow-[#25D366]/30 transition-all duration-300 w-full sm:w-auto"
+                  className="w-full sm:w-auto"
                 >
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
