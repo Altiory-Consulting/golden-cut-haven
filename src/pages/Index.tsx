@@ -489,7 +489,7 @@ export default function Index() {
       
 
       {/* Sedi Section */}
-      <section className="py-24 lg:py-32 bg-champagne relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-gradient-champagne-luxe relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <motion.div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary blur-3xl" animate={{
           x: [0, 50, 0],

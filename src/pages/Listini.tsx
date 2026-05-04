@@ -239,7 +239,7 @@ export default function Listini() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-champagne relative overflow-hidden">
+      <section className="py-24 bg-gradient-champagne-luxe relative overflow-hidden">
         <motion.div 
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
           animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
