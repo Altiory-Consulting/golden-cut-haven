@@ -89,7 +89,7 @@ export function SocialSection() {
             <motion.button
               onClick={() => setActiveTab("instagram")}
               className={`relative px-6 py-3 rounded-full font-cormorant text-lg tracking-wider transition-colors ${
-                activeTab === "instagram" ? "text-white" : "text-foreground/60 hover:text-foreground"
+                activeTab === "instagram" ? "text-primary-foreground" : "text-foreground/60 hover:text-foreground"
               }`}
               whileTap={{ scale: 0.95 }}
             >
@@ -109,7 +109,7 @@ export function SocialSection() {
             <motion.button
               onClick={() => setActiveTab("tiktok")}
               className={`relative px-6 py-3 rounded-full font-cormorant text-lg tracking-wider transition-colors ${
-                activeTab === "tiktok" ? "text-white" : "text-foreground/60 hover:text-foreground"
+                activeTab === "tiktok" ? "text-primary-foreground" : "text-foreground/60 hover:text-foreground"
               }`}
               whileTap={{ scale: 0.95 }}
             >
