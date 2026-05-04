@@ -52,17 +52,17 @@ export default function HairSpa() {
           style={{ opacity }}
         >
           <motion.div 
-            className="inline-flex items-center gap-2 bg-primary/20 border border-primary/50 rounded-full px-4 sm:px-6 py-2 mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 bg-primary/20 border border-primary/50 rounded-full px-3 sm:px-6 py-2 mb-6 sm:mb-8 max-w-full"
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <Gift className="w-4 h-4 text-primary animate-pulse" />
-            <span className="font-cormorant text-primary text-xs sm:text-sm tracking-wide">OFFERTA LIMITATA - 50% DI SCONTO</span>
+            <Gift className="w-4 h-4 text-primary animate-pulse shrink-0" />
+            <span className="font-cormorant text-primary text-[10px] sm:text-sm tracking-wider whitespace-nowrap">OFFERTA LIMITATA · 50% SCONTO</span>
           </motion.div>
           
           <motion.h1 
-            className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-foreground mb-4 sm:mb-6"
+            className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-foreground mb-4 sm:mb-6 break-words"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
