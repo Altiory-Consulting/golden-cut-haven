@@ -291,7 +291,7 @@ export default function Index() {
               </p>
               <div className="flex items-center gap-6">
                 <span className="w-20 h-px bg-primary" />
-                <p className="font-playfair italic text-primary text-lg">Hair do top — dal 2014</p>
+                <p className="font-playfair italic text-primary text-lg">Hair do top — dal 2019</p>
               </div>
             </ScrollReveal>
           </div>
